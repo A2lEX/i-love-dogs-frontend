@@ -1,0 +1,34 @@
+.container {
+  padding: 48px 24px 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 500px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.empty {
+  text-align: center;
+  padding: 80px 24px;
+  color: var(--text-muted);
+}
