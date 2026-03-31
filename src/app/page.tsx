@@ -1,66 +1,67 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Link from 'next/link';
+import DogCard, { Dog } from '@/components/dogs/DogCard';
+import styles from './page.module.css';
 
-export default function Home() {
+export const dynamic = 'force-dynamic';
+
+async function getFeaturedDogs(): Promise<Dog[]> {
+  try {
+    const res = await fetch('http://localhost:3000/api/v1/dogs?limit=4', {
+      next: { revalidate: 0 },
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return data.data.items;
+  } catch {
+    return [];
+  }
+}
+
+export default async function Home() {
+  const dogs = await getFeaturedDogs();
+
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+      <section className={styles.hero}>
+        <h1 className={styles.title}>Помогите тем, кто не может попросить сам</h1>
+        <p className={styles.subtitle}>
+          Собаки из приютов ждут вашей помощи. Пожертвуйте на лечение, корм или просто сходите на прогулку.
+        </p>
+        <div className={styles.ctaGroup}>
+          <Link href="/dogs" className={styles.btnPrimary}>
+            Смотреть собак
+          </Link>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {dogs.length > 0 && (
+        <section className={styles.featured}>
+          <h2 className={styles.sectionTitle}>Им сейчас нужна помощь</h2>
+          <div className={styles.grid}>
+            {dogs.map((dog) => (
+              <DogCard key={dog.id} dog={dog} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section className={styles.howItWorks}>
+        <h2 className={styles.sectionTitle}>Как это работает</h2>
+        <div className={styles.steps}>
+          <div className={styles.step}>
+            <span className={styles.stepNumber}>1</span>
+            <p>Выберите собаку и прочитайте её историю</p>
+          </div>
+          <div className={styles.step}>
+            <span className={styles.stepNumber}>2</span>
+            <p>Помогите — пожертвуйте на лечение, корм или передержку</p>
+          </div>
+          <div className={styles.step}>
+            <span className={styles.stepNumber}>3</span>
+            <p>Следите за отчётами и, если хотите, запишитесь на прогулку</p>
+          </div>
         </div>
-      </main>
+      </section>
     </div>
   );
 }
