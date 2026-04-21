@@ -29,10 +29,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     router.push(`/${lang}/auth/login`);
   }, [router, pathname]);
 
-  const normalizeUser = (userData: Partial<User>): User | null => {
+  const normalizeUser = (userData: any): User | null => {
     if (!userData) return null;
     
-    const roles = userData.roles || (userData.id ? ['donor'] : []);
+    // API returns 'role' (string) or 'roles' (array)
+    let roles: string[] = [];
+    if (Array.isArray(userData.roles)) {
+      roles = userData.roles;
+    } else if (typeof userData.role === 'string') {
+      roles = [userData.role];
+    } else if (userData.id) {
+      roles = ['donor'];
+    }
     
     return {
       id: userData.id || '',
