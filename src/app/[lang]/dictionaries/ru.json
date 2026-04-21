@@ -51,6 +51,16 @@
   "modal": {
     "close": "Закрыть"
   },
+  "profile": {
+    "title": "Личный кабинет",
+    "logout": "Выйти",
+    "email": "Email",
+    "name": "Имя",
+    "role": "Роль",
+    "status": "Статус",
+    "created_at": "Дата регистрации",
+    "no_user": "Пользователь не найден"
+  },
   "progress": {
     "of": "из",
     "currency": "руб."

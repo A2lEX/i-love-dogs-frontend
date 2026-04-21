@@ -51,6 +51,16 @@
   "modal": {
     "close": "Close"
   },
+  "profile": {
+    "title": "Profile",
+    "logout": "Logout",
+    "email": "Email",
+    "name": "Name",
+    "role": "Role",
+    "status": "Status",
+    "created_at": "Joined",
+    "no_user": "User not found"
+  },
   "progress": {
     "of": "of",
     "currency": "RUB"

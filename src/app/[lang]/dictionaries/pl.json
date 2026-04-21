@@ -51,6 +51,16 @@
   "modal": {
     "close": "Zamknij"
   },
+  "profile": {
+    "title": "Profil",
+    "logout": "Wyloguj",
+    "email": "Email",
+    "name": "Imie",
+    "role": "Rola",
+    "status": "Status",
+    "created_at": "Data rejestracji",
+    "no_user": "Nie znaleziono uzytkownika"
+  },
   "progress": {
     "of": "z",
     "currency": "PLN"

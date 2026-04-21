@@ -45,7 +45,9 @@ export default function Header() {
           
           {isAuthenticated && user ? (
             <div className={styles.userInfo}>
-              <span className={styles.userName}>{user.name}</span>
+              <Link href={`/${lang}/profile`} className={styles.userName}>
+                {user.email}
+              </Link>
               <button onClick={logout} className={styles.btnLogout}>
                 {dict.auth.logout_button || 'Logout'}
               </button>
