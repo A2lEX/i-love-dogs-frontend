@@ -33,10 +33,14 @@ function LoginForm() {
 
       const returnTo = searchParams.get('returnTo') || `/${lang}/dogs`;
       router.push(returnTo);
-    } catch (err: unknown) {
-      if (err !== null && typeof err === 'object' && 'response' in err) {
-        const errorResp = err as { response?: { data?: { message?: string } } };
-        setError(errorResp.response?.data?.message || dict.auth.login_error);
+    } catch (err: any) {
+      const responseData = err?.response?.data;
+      const msg = responseData?.message;
+      
+      if (Array.isArray(msg)) {
+        setError(msg[0]);
+      } else if (typeof msg === 'string') {
+        setError(msg);
       } else {
         setError(dict.auth.login_error);
       }
