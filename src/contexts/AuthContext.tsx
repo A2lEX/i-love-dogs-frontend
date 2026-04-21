@@ -47,23 +47,41 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
   };
 
+  const fetchMe = useCallback(async () => {
+    try {
+      const { data } = await api.get('/auth/me');
+      const normalized = normalizeUser(data);
+      setUser(normalized);
+      localStorage.setItem('user', JSON.stringify(data));
+    } catch (err) {
+      console.error('Failed to fetch user profile', err);
+      // Optional: if it's 401, clear everything
+      // logout();
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
     // Try to load user from local storage
     const token = localStorage.getItem('authToken');
     const storedUser = localStorage.getItem('user');
 
-    if (token && storedUser) {
-      try {
-        const userData = JSON.parse(storedUser);
-        setUser(normalizeUser(userData));
-      } catch (e) {
-        console.error('Failed to parse stored user', e);
-        localStorage.removeItem('user');
+    if (token) {
+      if (storedUser) {
+        try {
+          setUser(normalizeUser(JSON.parse(storedUser)));
+        } catch (e) {
+          console.error('Failed to parse stored user', e);
+        }
       }
+      
+      // Always fetch fresh data from API if we have a token
+      fetchMe();
+    } else {
+      setIsLoading(false);
     }
     
-    setIsLoading(false);
-
     // Listen to unauthorized events from our API interceptor
     const handleUnauthorized = () => {
       logout();
@@ -71,7 +89,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     window.addEventListener('auth:unauthorized', handleUnauthorized);
     return () => window.removeEventListener('auth:unauthorized', handleUnauthorized);
-  }, [logout]);
+  }, [logout, fetchMe]);
 
   const login = (token: string, userData: any) => {
     localStorage.setItem('authToken', token);
