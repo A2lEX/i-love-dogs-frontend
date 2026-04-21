@@ -3,12 +3,14 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useDictionary } from '@/contexts/DictionaryContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { locales } from '@/i18n/config';
 import type { Locale } from '@/i18n/config';
 import styles from './Header.module.css';
 
 export default function Header() {
   const { dict, lang } = useDictionary();
+  const { user, isAuthenticated, logout } = useAuth();
   const pathname = usePathname();
 
   const switchLocale = (newLang: Locale) => {
@@ -40,12 +42,24 @@ export default function Header() {
               </Link>
             ))}
           </div>
-          <Link href={`/${lang}/auth/login`} className={styles.btnLogin}>
-            {dict.nav.login}
-          </Link>
-          <Link href={`/${lang}/auth/register`} className={styles.btnRegister}>
-            {dict.nav.register}
-          </Link>
+          
+          {isAuthenticated && user ? (
+            <div className={styles.userInfo}>
+              <span className={styles.userName}>{user.name}</span>
+              <button onClick={logout} className={styles.btnLogout}>
+                {dict.auth.logout_button || 'Logout'}
+              </button>
+            </div>
+          ) : (
+            <>
+              <Link href={`/${lang}/auth/login`} className={styles.btnLogin}>
+                {dict.nav.login}
+              </Link>
+              <Link href={`/${lang}/auth/register`} className={styles.btnRegister}>
+                {dict.nav.register}
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </header>

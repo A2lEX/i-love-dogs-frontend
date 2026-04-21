@@ -102,3 +102,34 @@
   background: var(--accent-base);
   color: #fff;
 }
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: 0 0.5rem;
+}
+
+.userName {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.btnLogout {
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  background: none;
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btnLogout:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
