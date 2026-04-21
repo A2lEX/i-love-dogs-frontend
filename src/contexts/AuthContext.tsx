@@ -34,6 +34,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     router.push(`/${lang}/auth/login`);
   }, [router, pathname]);
 
+  const normalizeUser = (userData: any): User | null => {
+    if (!userData) return null;
+    
+    const roles = userData.roles || (userData.role ? [userData.role] : []);
+    
+    return {
+      id: userData.id,
+      email: userData.email,
+      name: userData.name,
+      roles: roles,
+    };
+  };
+
   useEffect(() => {
     // Try to load user from local storage
     const token = localStorage.getItem('authToken');
@@ -41,7 +54,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     if (token && storedUser) {
       try {
-        setUser(JSON.parse(storedUser));
+        const userData = JSON.parse(storedUser);
+        setUser(normalizeUser(userData));
       } catch (e) {
         console.error('Failed to parse stored user', e);
         localStorage.removeItem('user');
@@ -59,10 +73,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener('auth:unauthorized', handleUnauthorized);
   }, [logout]);
 
-  const login = (token: string, userData: User) => {
+  const login = (token: string, userData: any) => {
     localStorage.setItem('authToken', token);
     localStorage.setItem('user', JSON.stringify(userData));
-    setUser(userData);
+    setUser(normalizeUser(userData));
   };
 
   return (
