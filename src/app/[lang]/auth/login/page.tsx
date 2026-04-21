@@ -27,9 +27,11 @@ function LoginForm() {
     setLoading(true);
 
     try {
-      const { data } = await api.post('/auth/login', { email, password });
-      const token = data.access_token || data.token;
-      login(token, data.user || { id: 'some-id', email, name: 'User', roles: [] });
+      const response = await api.post('/auth/login', { email, password });
+      const result = response.data.data || response.data;
+      const token = result.access_token || result.token;
+      
+      login(token, result.user || { id: 'some-id', email, name: 'User', roles: [] });
 
       const returnTo = searchParams.get('returnTo') || `/${lang}/dogs`;
       router.push(returnTo);
