@@ -10,8 +10,9 @@ export function useCuratorDogs() {
   const fetchDogs = async () => {
     setIsLoading(true);
     try {
-      const { data } = await api.get('/curators/profile');
-      setDogs(data.dogs || []);
+      const response = await api.get('/curators/profile');
+      const profile = response.data.data || response.data;
+      setDogs(profile.dogs || []);
       setError(null);
     } catch (err: any) {
       console.error(err);
