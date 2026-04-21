@@ -4,17 +4,17 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import styles from './DogManagementForm.module.css';
 import { api } from '@/lib/api';
-import { useDictionary } from '@/contexts/DictionaryContext';
+import { Dog } from '@/types';
 
 export interface DogData {
   id?: string;
   name: string;
   breed: string;
   age_months: number;
-  gender: 'male' | 'female' | 'unknown';
+  gender: Dog['gender'];
   city: string;
   description: string;
-  status: 'active' | 'on_hold' | 'medical' | 'adopted' | 'deceased' | 'archived';
+  status: Dog['status'] | 'on_hold' | 'medical';
   photos: string[];
   cover_photo_url: string;
 }
@@ -26,7 +26,6 @@ interface DogManagementFormProps {
 }
 
 export function DogManagementForm({ initialData, onSuccess, onCancel }: DogManagementFormProps) {
-  const { dict } = useDictionary();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -34,10 +33,10 @@ export function DogManagementForm({ initialData, onSuccess, onCancel }: DogManag
   const [name, setName] = useState(initialData?.name || '');
   const [breed, setBreed] = useState(initialData?.breed || '');
   const [ageMonths, setAgeMonths] = useState(initialData?.age_months || 12);
-  const [gender, setGender] = useState(initialData?.gender || 'male');
+  const [gender, setGender] = useState<Dog['gender']>(initialData?.gender || 'male');
   const [city, setCity] = useState(initialData?.city || '');
   const [description, setDescription] = useState(initialData?.description || '');
-  const [status, setStatus] = useState(initialData?.status || 'active');
+  const [status, setStatus] = useState<DogData['status']>(initialData?.status || 'active');
   const [photos, setPhotos] = useState<string[]>(initialData?.photos || []);
   const [coverPhoto, setCoverPhoto] = useState(initialData?.cover_photo_url || (photos.length > 0 ? photos[0] : ''));
 
@@ -46,7 +45,7 @@ export function DogManagementForm({ initialData, onSuccess, onCancel }: DogManag
     setIsSubmitting(true);
     setError(null);
 
-    const payload: any = {
+    const payload: Partial<DogData> = {
       name,
       breed,
       age_months: Number(ageMonths),
@@ -68,8 +67,9 @@ export function DogManagementForm({ initialData, onSuccess, onCancel }: DogManag
         await api.post('/dogs', payload);
       }
       onSuccess();
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error(err);
+      // @ts-ignore - response might exist on Axios error
       setError(err?.response?.data?.message || 'Something went wrong');
     } finally {
       setIsSubmitting(false);
@@ -85,7 +85,7 @@ export function DogManagementForm({ initialData, onSuccess, onCancel }: DogManag
           <label className={styles.label}>Name *</label>
           <Input 
             value={name} 
-            onChange={(e) => setName(e.target.value)} 
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} 
             required 
             placeholder="e.g. Buddy" 
           />
@@ -94,7 +94,7 @@ export function DogManagementForm({ initialData, onSuccess, onCancel }: DogManag
           <label className={styles.label}>Breed</label>
           <Input 
             value={breed} 
-            onChange={(e) => setBreed(e.target.value)} 
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBreed(e.target.value)} 
             placeholder="e.g. Mixed" 
           />
         </div>
@@ -106,7 +106,7 @@ export function DogManagementForm({ initialData, onSuccess, onCancel }: DogManag
           <Input 
             type="number" 
             value={ageMonths} 
-            onChange={(e) => setAgeMonths(Number(e.target.value))} 
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAgeMonths(Number(e.target.value))} 
             min={0}
           />
         </div>
@@ -115,7 +115,7 @@ export function DogManagementForm({ initialData, onSuccess, onCancel }: DogManag
           <select 
             className={styles.select} 
             value={gender} 
-            onChange={(e) => setGender(e.target.value as any)}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setGender(e.target.value as Dog['gender'])}
           >
             <option value="male">Male</option>
             <option value="female">Female</option>
@@ -127,7 +127,7 @@ export function DogManagementForm({ initialData, onSuccess, onCancel }: DogManag
           <select 
             className={styles.select} 
             value={status} 
-            onChange={(e) => setStatus(e.target.value as any)}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setStatus(e.target.value as DogData['status'])}
           >
             <option value="active">Active (Looking for home)</option>
             <option value="on_hold">On Hold (Foster care)</option>
@@ -171,7 +171,7 @@ export function DogManagementForm({ initialData, onSuccess, onCancel }: DogManag
       </div>
 
       <div className={styles.actions}>
-        <Button type="button" onClick={onCancel} variant="outline" disabled={isSubmitting}>
+        <Button type="button" onClick={onCancel} variant="secondary" disabled={isSubmitting}>
           Cancel
         </Button>
         <Button type="submit" disabled={isSubmitting}>

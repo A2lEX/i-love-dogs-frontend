@@ -62,7 +62,7 @@ export default function ProfilePage() {
         </div>
 
         <div className={styles.actions}>
-          <Button onClick={logout} variant="outline" className={styles.btnLogout}>
+          <Button onClick={logout} variant="secondary" className={styles.btnLogout}>
             {dict.profile.logout}
           </Button>
         </div>

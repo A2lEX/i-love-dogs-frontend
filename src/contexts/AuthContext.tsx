@@ -3,13 +3,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { api } from '@/lib/api';
-
-interface User {
-  id: string;
-  email: string;
-  name: string;
-  roles: string[];
-}
+import { User } from '@/types';
 
 interface AuthContextType {
   user: User | null;
@@ -35,15 +29,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     router.push(`/${lang}/auth/login`);
   }, [router, pathname]);
 
-  const normalizeUser = (userData: any): User | null => {
+  const normalizeUser = (userData: Partial<User>): User | null => {
     if (!userData) return null;
     
-    const roles = userData.roles || (userData.role ? [userData.role] : []);
+    const roles = userData.roles || (userData.id ? ['donor'] : []);
     
     return {
-      id: userData.id,
-      email: userData.email,
-      name: userData.name,
+      id: userData.id || '',
+      email: userData.email || '',
+      name: userData.name || '',
       roles: roles,
     };
   };
@@ -94,7 +88,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener('auth:unauthorized', handleUnauthorized);
   }, [logout, fetchMe]);
 
-  const login = (token: string, userData: any) => {
+  const login = (token: string, userData: User) => {
     localStorage.setItem('authToken', token);
     localStorage.setItem('user', JSON.stringify(userData));
     setUser(normalizeUser(userData));

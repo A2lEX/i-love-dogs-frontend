@@ -37,7 +37,7 @@ export function CuratorDogsSection() {
 
       {dogs.length === 0 ? (
         <div className={styles.emptyState}>
-          <p>You haven't added any dogs yet.</p>
+          <p>You haven&apos;t added any dogs yet.</p>
         </div>
       ) : (
         <div className={styles.grid}>
@@ -55,7 +55,7 @@ export function CuratorDogsSection() {
                 <h3 className={styles.name}>{dog.name}</h3>
                 <p className={styles.details}>{dog.breed || 'Mixed'} • {dog.gender}</p>
                 <div className={styles.actions}>
-                  <Button variant="outline" onClick={() => openModal(dog)} className={styles.editBtn}>
+                  <Button variant="secondary" onClick={() => openModal(dog)} className={styles.editBtn}>
                     Edit
                   </Button>
                 </div>
