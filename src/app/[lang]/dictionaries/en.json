@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "DogCare",
+    "description": "Help shelter dogs — donations, walks, care."
+  },
+  "nav": {
+    "dogs": "Dogs",
+    "login": "Sign in",
+    "register": "Sign up"
+  },
+  "home": {
+    "hero_title": "Help those who can't ask for themselves",
+    "hero_subtitle": "Shelter dogs need your help. Donate for treatment, food, or just take them for a walk.",
+    "cta": "See dogs",
+    "featured_title": "They need help now",
+    "how_title": "How it works",
+    "step1": "Choose a dog and read its story",
+    "step2": "Help — donate for treatment, food, or foster care",
+    "step3": "Follow reports, and sign up for a walk if you'd like"
+  },
+  "dogs": {
+    "title": "Dogs",
+    "subtitle": "Each one is waiting for help. Choose a dog, learn its story.",
+    "empty": "No dogs yet. Check back later.",
+    "age_months": "mo",
+    "age_years": "y",
+    "photo_placeholder": "Photo coming soon"
+  },
+  "auth": {
+    "login_title": "Sign in",
+    "login_subtitle": "Sign in to help dogs and sign up for walks.",
+    "login_button": "Sign in",
+    "login_loading": "Signing in...",
+    "login_error": "Wrong email or password.",
+    "register_title": "Sign up",
+    "register_subtitle": "Create an account to help dogs.",
+    "register_button": "Create account",
+    "register_loading": "Creating...",
+    "register_error": "Could not register.",
+    "no_account": "No account?",
+    "has_account": "Already have an account?",
+    "link_register": "Sign up",
+    "link_login": "Sign in",
+    "label_name": "Name",
+    "label_email": "Email",
+    "label_password": "Password",
+    "placeholder_name": "Your name",
+    "placeholder_email": "you@example.com",
+    "placeholder_password": "********"
+  },
+  "modal": {
+    "close": "Close"
+  },
+  "progress": {
+    "of": "of",
+    "currency": "RUB"
+  }
+}

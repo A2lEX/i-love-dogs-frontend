@@ -1,0 +1,58 @@
+{
+  "meta": {
+    "title": "DogCare",
+    "description": "Pomagaj psom ze schronisk — darowizny, spacery, opieka."
+  },
+  "nav": {
+    "dogs": "Psy",
+    "login": "Zaloguj",
+    "register": "Rejestracja"
+  },
+  "home": {
+    "hero_title": "Pomoz tym, ktorzy nie moga prosic sami",
+    "hero_subtitle": "Psy ze schronisk czekaja na Twoja pomoc. Przekaz darowizne na leczenie, karme lub po prostu idz na spacer.",
+    "cta": "Zobacz psy",
+    "featured_title": "Teraz potrzebuja pomocy",
+    "how_title": "Jak to dziala",
+    "step1": "Wybierz psa i przeczytaj jego historie",
+    "step2": "Pomoz — przekaz darowizne na leczenie, karme lub dom tymczasowy",
+    "step3": "Sledz raporty i zapisz sie na spacer, jesli chcesz"
+  },
+  "dogs": {
+    "title": "Psy",
+    "subtitle": "Kazdy z nich czeka na pomoc. Wybierz psa, poznaj jego historie.",
+    "empty": "Na razie brak psow. Sprawdz pozniej.",
+    "age_months": "mies",
+    "age_years": "l",
+    "photo_placeholder": "Zdjecie wkrotce"
+  },
+  "auth": {
+    "login_title": "Logowanie",
+    "login_subtitle": "Zaloguj sie, aby pomagac psom i zapisywac sie na spacery.",
+    "login_button": "Zaloguj",
+    "login_loading": "Logowanie...",
+    "login_error": "Bledny email lub haslo.",
+    "register_title": "Rejestracja",
+    "register_subtitle": "Utworz konto, aby pomagac psom.",
+    "register_button": "Utworz konto",
+    "register_loading": "Tworzenie...",
+    "register_error": "Nie udalo sie zarejestrowac.",
+    "no_account": "Nie masz konta?",
+    "has_account": "Masz juz konto?",
+    "link_register": "Zarejestruj sie",
+    "link_login": "Zaloguj sie",
+    "label_name": "Imie",
+    "label_email": "Email",
+    "label_password": "Haslo",
+    "placeholder_name": "Twoje imie",
+    "placeholder_email": "you@example.com",
+    "placeholder_password": "********"
+  },
+  "modal": {
+    "close": "Zamknij"
+  },
+  "progress": {
+    "of": "z",
+    "currency": "PLN"
+  }
+}

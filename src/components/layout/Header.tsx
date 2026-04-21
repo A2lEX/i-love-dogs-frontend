@@ -1,24 +1,50 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useDictionary } from '@/contexts/DictionaryContext';
+import { locales } from '@/i18n/config';
+import type { Locale } from '@/i18n/config';
 import styles from './Header.module.css';
 
 export default function Header() {
+  const { dict, lang } = useDictionary();
+  const pathname = usePathname();
+
+  const switchLocale = (newLang: Locale) => {
+    const segments = pathname.split('/');
+    segments[1] = newLang;
+    return segments.join('/');
+  };
+
   return (
     <header className={styles.header}>
       <div className={`container ${styles.nav}`}>
-        <Link href="/" className={styles.logo}>
+        <Link href={`/${lang}`} className={styles.logo}>
           DogCare
         </Link>
         <div className={styles.links}>
-          <Link href="/dogs" className={styles.link}>
-            Собаки
+          <Link href={`/${lang}/dogs`} className={styles.link}>
+            {dict.nav.dogs}
           </Link>
         </div>
         <div className={styles.authGroup}>
-          <Link href="/auth/login" className={styles.btnLogin}>
-            Войти
+          <div className={styles.langSwitcher}>
+            {locales.map((loc) => (
+              <Link
+                key={loc}
+                href={switchLocale(loc)}
+                className={`${styles.langBtn} ${loc === lang ? styles.langActive : ''}`}
+              >
+                {loc.toUpperCase()}
+              </Link>
+            ))}
+          </div>
+          <Link href={`/${lang}/auth/login`} className={styles.btnLogin}>
+            {dict.nav.login}
           </Link>
-          <Link href="/auth/register" className={styles.btnRegister}>
-            Регистрация
+          <Link href={`/${lang}/auth/register`} className={styles.btnRegister}>
+            {dict.nav.register}
           </Link>
         </div>
       </div>

@@ -1,12 +1,14 @@
-import React from 'react';
 import DogCard, { Dog } from '@/components/dogs/DogCard';
 import styles from './DogsPage.module.css';
+import { notFound } from 'next/navigation';
+import { getDictionary, hasLocale } from '../dictionaries';
+import type { Locale } from '../dictionaries';
 
 export const dynamic = 'force-dynamic';
 
 async function getDogs(): Promise<Dog[]> {
   try {
-    const res = await fetch('http://localhost:3000/api/v1/dogs', {
+    const res = await fetch('http://localhost:3001/api/v1/dogs', {
       next: { revalidate: 0 },
     });
 
@@ -22,27 +24,28 @@ async function getDogs(): Promise<Dog[]> {
   }
 }
 
-export default async function DogsPage() {
+export default async function DogsPage({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+  if (!hasLocale(lang)) notFound();
+  const dict = await getDictionary(lang as Locale);
   const dogs = await getDogs();
 
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Собаки</h1>
-        <p className={styles.subtitle}>
-          Каждый из них ждёт помощи. Выберите собаку, узнайте её историю.
-        </p>
+        <h1 className={styles.title}>{dict.dogs.title}</h1>
+        <p className={styles.subtitle}>{dict.dogs.subtitle}</p>
       </header>
 
       {dogs.length > 0 ? (
         <div className={styles.grid}>
           {dogs.map((dog) => (
-            <DogCard key={dog.id} dog={dog} />
+            <DogCard key={dog.id} dog={dog} lang={lang as Locale} />
           ))}
         </div>
       ) : (
         <div className={styles.empty}>
-          <p>Пока нет собак. Попробуйте позже.</p>
+          <p>{dict.dogs.empty}</p>
         </div>
       )}
     </div>

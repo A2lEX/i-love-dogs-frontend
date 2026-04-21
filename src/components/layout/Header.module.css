@@ -69,3 +69,36 @@
   background: var(--accent-hover);
   color: #fff;
 }
+
+.langSwitcher {
+  display: flex;
+  gap: 2px;
+  margin-right: var(--spacing-sm);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.langBtn {
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.langBtn:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.langActive {
+  background: var(--accent-base);
+  color: #fff;
+}
+
+.langActive:hover {
+  background: var(--accent-base);
+  color: #fff;
+}
