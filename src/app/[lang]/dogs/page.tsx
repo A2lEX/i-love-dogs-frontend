@@ -8,7 +8,8 @@ export const dynamic = 'force-dynamic';
 
 async function getDogs(): Promise<Dog[]> {
   try {
-    const res = await fetch('http://localhost:3001/api/v1/dogs', {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://wallegro.ru:3001/api/v1';
+    const res = await fetch(`${apiUrl}/dogs`, {
       next: { revalidate: 0 },
     });
 
