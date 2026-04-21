@@ -11,12 +11,14 @@ export const api = axios.create({
 // Request interceptor to attach JWT token
 api.interceptors.request.use(
   (config) => {
-    // In next.js, if this runs on client, we can grab token from localStorage or cookies
-    // For now, let's try reading from localStorage
     if (typeof window !== 'undefined') {
       const token = localStorage.getItem('authToken');
-      if (token && config.headers) {
-        config.headers.Authorization = `Bearer ${token}`;
+      if (token) {
+        // Use .set() for Axios 1.x compatibility
+        config.headers.set('Authorization', `Bearer ${token}`);
+        console.log(`[API] Attached token to ${config.url}`);
+      } else {
+        console.warn(`[API] No token found for ${config.url}`);
       }
     }
     return config;
