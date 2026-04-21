@@ -8,6 +8,8 @@ import { Button } from '@/components/ui/Button';
 
 import Link from 'next/link';
 
+import { CuratorDogsSection } from './CuratorDogsSection';
+
 export default function ProfilePage() {
   const { user, logout, isLoading } = useAuth();
   const { dict, lang } = useDictionary();
@@ -32,6 +34,8 @@ export default function ProfilePage() {
       </div>
     );
   }
+
+  const isCurator = user.roles.includes('curator');
 
   return (
     <div className={styles.container}>
@@ -62,6 +66,8 @@ export default function ProfilePage() {
             {dict.profile.logout}
           </Button>
         </div>
+        
+        {isCurator && <CuratorDogsSection />}
       </div>
     </div>
   );
