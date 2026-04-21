@@ -50,10 +50,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const fetchMe = useCallback(async () => {
     try {
-      const { data } = await api.get('/auth/me');
-      const normalized = normalizeUser(data);
+      const response = await api.get('/auth/me');
+      // Handle nested data from ResponseInterceptor
+      const userData = response.data.data || response.data;
+      const normalized = normalizeUser(userData);
       setUser(normalized);
-      localStorage.setItem('user', JSON.stringify(data));
+      localStorage.setItem('user', JSON.stringify(userData));
     } catch (err) {
       console.error('Failed to fetch user profile', err);
       // Optional: if it's 401, clear everything
