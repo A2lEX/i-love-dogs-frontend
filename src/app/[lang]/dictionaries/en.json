@@ -61,6 +61,19 @@
     "created_at": "Joined",
     "no_user": "User not found"
   },
+  "dogPage": {
+    "back": "All dogs",
+    "gender_male": "Male",
+    "gender_female": "Female",
+    "gender_unknown": "Unknown",
+    "curator": "Shelter:",
+    "goals_title": "How you can help",
+    "goal_medical": "Medical",
+    "goal_food": "Food",
+    "goal_shelter": "Shelter",
+    "goal_other": "Other",
+    "recurring": "Monthly"
+  },
   "progress": {
     "of": "of",
     "currency": "RUB"

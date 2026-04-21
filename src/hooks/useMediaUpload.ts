@@ -8,10 +8,11 @@ export function useMediaUpload() {
     setIsUploading(true);
     try {
       // 1. Get presigned URL
-      const { data } = await api.post('/media/presigned-url', {
+      const response = await api.post('/media/presigned-url', {
         filename: file.name,
         content_type: file.type,
       });
+      const data = response.data.data || response.data;
 
       // 2. Upload directly to S3
       await fetch(data.upload_url, {

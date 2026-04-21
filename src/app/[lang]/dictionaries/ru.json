@@ -61,6 +61,19 @@
     "created_at": "Дата регистрации",
     "no_user": "Пользователь не найден"
   },
+  "dogPage": {
+    "back": "Все собаки",
+    "gender_male": "Мальчик",
+    "gender_female": "Девочка",
+    "gender_unknown": "Не указан",
+    "curator": "Приют:",
+    "goals_title": "Как вы можете помочь",
+    "goal_medical": "Лечение",
+    "goal_food": "Питание",
+    "goal_shelter": "Содержание",
+    "goal_other": "Другое",
+    "recurring": "Ежемесячно"
+  },
   "progress": {
     "of": "из",
     "currency": "руб."

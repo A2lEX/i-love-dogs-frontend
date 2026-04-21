@@ -61,6 +61,19 @@
     "created_at": "Data rejestracji",
     "no_user": "Nie znaleziono uzytkownika"
   },
+  "dogPage": {
+    "back": "Wszystkie psy",
+    "gender_male": "Samiec",
+    "gender_female": "Samica",
+    "gender_unknown": "Nieznany",
+    "curator": "Schronisko:",
+    "goals_title": "Jak mozesz pomoc",
+    "goal_medical": "Leczenie",
+    "goal_food": "Karma",
+    "goal_shelter": "Schronienie",
+    "goal_other": "Inne",
+    "recurring": "Miesiecznie"
+  },
   "progress": {
     "of": "z",
     "currency": "PLN"
