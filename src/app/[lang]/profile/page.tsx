@@ -20,11 +20,11 @@ export default function ProfilePage() {
     );
   }
 
-  if (!user) {
+  if (!user || !dict.profile) {
     return (
       <div className={styles.container}>
         <div className={styles.errorBox}>
-          <h1>{dict.profile.no_user}</h1>
+          <h1>{dict.profile?.no_user || 'User not found'}</h1>
           <Link href={`/${lang}/auth/login`} className={styles.btnLink}>
             <Button>{dict.nav.login}</Button>
           </Link>

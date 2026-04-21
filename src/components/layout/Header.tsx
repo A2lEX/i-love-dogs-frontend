@@ -49,7 +49,7 @@ export default function Header() {
                 {user.email}
               </Link>
               <button onClick={logout} className={styles.btnLogout}>
-                {dict.auth.logout_button || 'Logout'}
+                {dict.profile?.logout || 'Logout'}
               </button>
             </div>
           ) : (
