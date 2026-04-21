@@ -46,7 +46,7 @@ export function DogManagementForm({ initialData, onSuccess, onCancel }: DogManag
     setIsSubmitting(true);
     setError(null);
 
-    const payload = {
+    const payload: any = {
       name,
       breed,
       age_months: Number(ageMonths),
@@ -54,9 +54,12 @@ export function DogManagementForm({ initialData, onSuccess, onCancel }: DogManag
       city,
       description,
       status,
-      photos,
-      cover_photo_url: coverPhoto,
+      photos: photos.filter(p => !!p),
     };
+
+    if (coverPhoto) {
+      payload.cover_photo_url = coverPhoto;
+    }
 
     try {
       if (initialData?.id) {
