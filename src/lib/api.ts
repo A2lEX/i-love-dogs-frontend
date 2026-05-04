@@ -26,6 +26,23 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
+// Request interceptor to attach region/country filter
+api.interceptors.request.use(
+  (config) => {
+    if (typeof window !== 'undefined') {
+      const match = document.cookie.match(/(?:^|; )x-country=([^;]*)/);
+      const country = match ? decodeURIComponent(match[1]) : null;
+      if (country && config.url) {
+        if (config.url.includes('/dogs')) {
+          config.params = { ...config.params, country };
+        }
+      }
+    }
+    return config;
+  },
+  (error) => Promise.reject(error),
+);
+
 // Response interceptor for automatic error handling
 api.interceptors.response.use(
   (response) => response,
