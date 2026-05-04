@@ -1,0 +1,81 @@
+{
+  "meta": {
+    "title": "DogCare",
+    "description": "Pomozite psima iz skloništa — donacije, šetnje, briga."
+  },
+  "nav": {
+    "dogs": "Psi",
+    "login": "Prijava",
+    "register": "Registracija"
+  },
+  "home": {
+    "hero_title": "Pomozite onima koji ne mogu da traže sami",
+    "hero_subtitle": "Psi iz skloništa trebaju vašu pomoć. Donirajte za liječenje, hranu, ili ih izvedite u šetnju.",
+    "cta": "Pogledaj pse",
+    "featured_title": "Potrebna im je pomoć sada",
+    "how_title": "Kako funkcioniše",
+    "step1": "Izaberite psa i pročitajte njegovu priču",
+    "step2": "Pomozite — donirajte za liječenje, hranu ili smještaj",
+    "step3": "Pratite izvještaje i prijavite se za šetnju"
+  },
+  "dogs": {
+    "title": "Psi",
+    "subtitle": "Svaki čeka pomoć. Izaberite psa, saznajte njegovu priču.",
+    "empty": "Još nema pasa. Provjerite ponovo senare.",
+    "age_months": "mj",
+    "age_years": "g",
+    "photo_placeholder": "Fotografija uskoro"
+  },
+  "auth": {
+    "login_title": "Prijava",
+    "login_subtitle": "Prijavite se da pomognete psima i prijavite se za šetnje.",
+    "login_button": "Prijavi se",
+    "login_loading": "Prijavljivanje...",
+    "login_error": "Pogrešan email ili lozinka.",
+    "register_title": "Registracija",
+    "register_subtitle": "Napravite nalog da pomognete psima.",
+    "register_button": "Napravi nalog",
+    "register_loading": "Kreiranje...",
+    "register_error": "Registracija nije uspjela.",
+    "no_account": "Nemate nalog?",
+    "has_account": "Već imate nalog?",
+    "link_register": "Registrujte se",
+    "link_login": "Prijavite se",
+    "label_name": "Ime",
+    "label_email": "Email",
+    "label_password": "Lozinka",
+    "placeholder_name": "Vaše ime",
+    "placeholder_email": "vi@example.com",
+    "placeholder_password": "********"
+  },
+  "modal": {
+    "close": "Zatvori"
+  },
+  "profile": {
+    "title": "Profil",
+    "logout": "Odjava",
+    "email": "Email",
+    "name": "Ime",
+    "role": "Uloga",
+    "status": "Status",
+    "created_at": "Registrovan",
+    "no_user": "Korisnik nije pronađen"
+  },
+  "dogPage": {
+    "back": "Svi psi",
+    "gender_male": "Mužjak",
+    "gender_female": "Ženka",
+    "gender_unknown": "Nepoznato",
+    "curator": "Sklonište:",
+    "goals_title": "Kako možete pomoći",
+    "goal_medical": "Liječenje",
+    "goal_food": "Hrana",
+    "goal_shelter": "Smještaj",
+    "goal_other": "Ostalo",
+    "recurring": "Mjesečno"
+  },
+  "progress": {
+    "of": "od",
+    "currency": "EUR"
+  }
+}
