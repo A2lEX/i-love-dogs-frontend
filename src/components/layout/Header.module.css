@@ -3,7 +3,8 @@
   top: 0;
   width: 100%;
   height: 72px;
-  background: var(--bg-primary);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   z-index: 100;
   display: flex;
@@ -18,13 +19,12 @@
 }
 
 .logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-primary);
+  display: flex;
+  align-items: center;
 }
 
 .logo:hover {
-  color: var(--text-primary);
+  opacity: 0.85;
 }
 
 .links {
@@ -132,4 +132,14 @@
   background: var(--bg-secondary);
   color: var(--text-primary);
   border-color: var(--text-secondary);
+}
+
+.currencySelect {
+  background: transparent;
+  border: 1px solid var(--border-color, #ddd);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: inherit;
 }
