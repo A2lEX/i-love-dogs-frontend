@@ -2,11 +2,14 @@
 
 import React from 'react';
 import { AuthProvider } from './AuthContext';
+import { RegionProvider } from './RegionContext';
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <AuthProvider>
-      {children}
-    </AuthProvider>
+    <RegionProvider>
+      <AuthProvider>
+        {children}
+      </AuthProvider>
+    </RegionProvider>
   );
 }
