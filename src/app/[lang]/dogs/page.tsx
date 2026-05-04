@@ -3,13 +3,16 @@ import styles from './DogsPage.module.css';
 import { notFound } from 'next/navigation';
 import { getDictionary, hasLocale } from '../dictionaries';
 import type { Locale } from '../dictionaries';
+import { cookies } from 'next/headers';
 
 export const dynamic = 'force-dynamic';
 
 async function getDogs(): Promise<Dog[]> {
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://i-love-dog-api.girsa.ru/api/v1';
-    const res = await fetch(`${apiUrl}/dogs`, {
+    const cookieStore = await cookies();
+    const country = cookieStore.get('x-country')?.value || 'ME';
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api/v1';
+    const res = await fetch(`${apiUrl}/dogs?country=${country}`, {
       next: { revalidate: 0 },
     });
 
