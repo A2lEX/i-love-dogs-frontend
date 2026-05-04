@@ -7,6 +7,8 @@ import { Providers } from '@/contexts/Providers';
 import { DictionaryProvider } from '@/contexts/DictionaryContext';
 import { getDictionary, hasLocale, locales } from './dictionaries';
 import type { Locale } from './dictionaries';
+import { cookies } from 'next/headers';
+import { regions, defaultRegion } from '@/config/regions';
 
 const inter = Inter({
   subsets: ['latin', 'cyrillic'],
@@ -15,7 +17,13 @@ const inter = Inter({
 });
 
 export async function generateStaticParams() {
-  return locales.map((lang) => ({ lang }));
+  const allLocales = new Set<string>();
+  for (const region of Object.values(regions)) {
+    for (const lang of region.languages) {
+      allLocales.add(lang);
+    }
+  }
+  return Array.from(allLocales).map((lang) => ({ lang }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
@@ -38,6 +46,14 @@ export default async function LangLayout({
   const { lang } = await params;
 
   if (!hasLocale(lang)) notFound();
+
+  // Check if language is supported by the current region
+  const cookieStore = await cookies();
+  const regionKey = cookieStore.get('x-region')?.value || defaultRegion;
+  const regionConfig = regions[regionKey];
+  if (regionConfig && !regionConfig.languages.includes(lang)) {
+    notFound();
+  }
 
   const dict = await getDictionary(lang as Locale);
 
