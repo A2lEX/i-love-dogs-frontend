@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { regions, defaultRegion } from '@/config/regions';
 
+// Known base domains (without subdomain) that should NOT be treated as having a subdomain
+const BASE_DOMAINS = [
+  'vercel.app',
+  'dogcare.ru',
+];
+
 function getSubdomain(hostname: string): string | null {
   const parts = hostname.split('.');
 
@@ -9,7 +15,22 @@ function getSubdomain(hostname: string): string | null {
     return parts.length >= 2 ? parts[0] : null;
   }
 
-  // me.dogcare.ru (3+ parts) vs dogcare.ru (2 parts)
+  // Check against known base domains
+  // e.g. i-love-dogs-frontend.vercel.app → no subdomain (base domain is *.vercel.app)
+  // e.g. me.dogcare.ru → subdomain "me" (base domain is dogcare.ru)
+  for (const base of BASE_DOMAINS) {
+    if (hostname.endsWith(base)) {
+      const prefix = hostname.slice(0, -(base.length + 1)); // remove ".base"
+      if (!prefix || !prefix.includes('.')) {
+        // No subdomain or single-level prefix (the app name itself)
+        return null;
+      }
+      // e.g. me.i-love-dogs-frontend.vercel.app → "me"
+      return prefix.split('.')[0];
+    }
+  }
+
+  // Fallback: 3+ parts means subdomain
   if (parts.length >= 3) {
     return parts[0];
   }
@@ -32,13 +53,40 @@ export function proxy(request: NextRequest) {
 
   const subdomain = getSubdomain(hostname);
 
-  // No subdomain → redirect to default region subdomain
+  // No subdomain → treat as default region (no redirect needed for single-region deployments)
   if (!subdomain) {
-    const protocol = request.nextUrl.protocol;
-    const port = request.nextUrl.port ? `:${request.nextUrl.port}` : '';
-    const baseDomain = hostname.includes('localhost') ? 'localhost' : hostname;
-    const redirectUrl = `${protocol}//${defaultRegion}.${baseDomain}${port}${pathname || '/'}${request.nextUrl.search}`;
-    return NextResponse.redirect(new URL(redirectUrl));
+    // On localhost, redirect to me.localhost for proper subdomain testing
+    if (hostname.includes('localhost')) {
+      const protocol = request.nextUrl.protocol;
+      const port = request.nextUrl.port ? `:${request.nextUrl.port}` : '';
+      const redirectUrl = `${protocol}//${defaultRegion}.localhost${port}${pathname || '/'}${request.nextUrl.search}`;
+      return NextResponse.redirect(new URL(redirectUrl));
+    }
+
+    // On production without subdomain (e.g. Vercel preview) — use default region
+    const regionConfig = regions[defaultRegion];
+    const pathSegments = pathname.split('/').filter(Boolean);
+    const firstSegment = pathSegments[0];
+
+    if (!firstSegment) {
+      return NextResponse.redirect(new URL(`/${regionConfig.defaultLanguage}`, request.url));
+    }
+
+    const isLanguageSegment = regionConfig.languages.includes(firstSegment);
+    if (!isLanguageSegment) {
+      if (firstSegment.length === 2) {
+        return NextResponse.rewrite(new URL('/not-found', request.url));
+      }
+      return NextResponse.redirect(new URL(`/${regionConfig.defaultLanguage}${pathname}`, request.url));
+    }
+
+    const response = NextResponse.next();
+    response.cookies.set('x-region', defaultRegion, { path: '/' });
+    response.cookies.set('x-country', defaultRegion.toUpperCase(), { path: '/' });
+    if (!request.cookies.get('preferred_currency')) {
+      response.cookies.set('preferred_currency', regionConfig.currency, { path: '/' });
+    }
+    return response;
   }
 
   // Invalid subdomain → 404
