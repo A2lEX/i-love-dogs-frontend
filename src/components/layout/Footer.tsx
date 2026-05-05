@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className="container">
         <div className={styles.content}>
-          <span className={styles.brand}>DogCare</span>
+          <img src="/logo.svg" alt="DogCare" width={120} height={28} className={styles.brand} />
           <span className={styles.copy}>&copy; {new Date().getFullYear()}</span>
         </div>
       </div>

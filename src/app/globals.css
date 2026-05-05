@@ -8,9 +8,10 @@
   --bg-secondary: #f7f7f7;
   --bg-tertiary: #f0f0f0;
 
-  --accent-base: #1a1a1a;
-  --accent-hover: #333;
-  --accent-light: rgba(26, 26, 26, 0.08);
+  --accent-base: #EA580C;
+  --accent-hover: #C2410C;
+  --accent-light: rgba(234, 88, 12, 0.08);
+  --accent-soft: rgba(234, 88, 12, 0.12);
 
   --success: #10b981;
   --error: #ef4444;
