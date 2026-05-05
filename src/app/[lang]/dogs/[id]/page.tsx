@@ -50,7 +50,7 @@ async function getDog(id: string): Promise<DogDetail | null> {
 }
 
 function formatAge(months: number, lang: Locale): string {
-  const labels = { en: { m: 'mo', y: 'y' }, ru: { m: 'мес', y: 'г' }, pl: { m: 'mies', y: 'l' } };
+  const labels: Record<string, { m: string; y: string }> = { en: { m: 'mo', y: 'y' }, ru: { m: 'мес', y: 'г' }, pl: { m: 'mies', y: 'l' }, sr: { m: 'mj', y: 'g' } };
   const l = labels[lang];
   if (months < 12) return `${months} ${l.m}`;
   const years = Math.floor(months / 12);
