@@ -56,7 +56,7 @@ export function PaymentMethodsSection() {
   const fetchMethods = useCallback(async () => {
     try {
       const res = await api.get('/payment-methods/my');
-      setMethods(res.data);
+      setMethods(Array.isArray(res.data) ? res.data : []);
     } catch {
       setError(t.error_load || 'Failed to load payment methods');
     } finally {
