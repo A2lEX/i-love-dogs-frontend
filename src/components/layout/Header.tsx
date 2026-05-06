@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useDictionary } from '@/contexts/DictionaryContext';
@@ -12,6 +13,18 @@ export default function Header() {
   const { user, isAuthenticated, logout } = useAuth();
   const { regionConfig, currency, setCurrency } = useRegion();
   const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Close menu on route change
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  // Lock body scroll when menu open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
 
   const switchLocale = (newLang: string) => {
     const segments = pathname.split('/');
@@ -25,12 +38,11 @@ export default function Header() {
         <Link href={`/${lang}`} className={styles.logo}>
           <img src="/logo.svg" alt="Tailo" width={140} height={32} />
         </Link>
-        <div className={styles.links}>
-          <Link href={`/${lang}/dogs`} className={styles.link}>
-            {dict.nav.dogs}
-          </Link>
-        </div>
-        <div className={styles.authGroup}>
+
+        {/* Desktop nav — placeholder for future links */}
+        <div className={styles.desktopNav} />
+
+        <div className={styles.desktopRight}>
           <div className={styles.langSwitcher}>
             {regionConfig.languages.map((loc) => (
               <Link
@@ -49,9 +61,7 @@ export default function Header() {
             onChange={(e) => setCurrency(e.target.value)}
           >
             {regionConfig.currencyOptions.map((cur) => (
-              <option key={cur} value={cur}>
-                {cur}
-              </option>
+              <option key={cur} value={cur}>{cur}</option>
             ))}
           </select>
 
@@ -74,6 +84,70 @@ export default function Header() {
               </Link>
             </>
           )}
+        </div>
+
+        {/* Burger button */}
+        <button
+          className={`${styles.burger} ${menuOpen ? styles.burgerOpen : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Menu"
+          aria-expanded={menuOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+      </div>
+
+      {/* Mobile overlay */}
+      {menuOpen && <div className={styles.overlay} onClick={() => setMenuOpen(false)} />}
+
+      {/* Mobile slide panel */}
+      <div className={`${styles.mobilePanel} ${menuOpen ? styles.mobilePanelOpen : ''}`}>
+        <nav className={styles.mobileNav}>
+          {isAuthenticated && user ? (
+            <>
+              <Link href={`/${lang}/profile`} className={styles.mobileLink}>
+                {user.email}
+              </Link>
+              <button onClick={logout} className={styles.mobileLink}>
+                {dict.profile?.logout || 'Logout'}
+              </button>
+            </>
+          ) : (
+            <>
+              <Link href={`/${lang}/auth/login`} className={styles.mobileLink}>
+                {dict.nav.login}
+              </Link>
+              <Link href={`/${lang}/auth/register`} className={styles.mobileLink}>
+                {dict.nav.register}
+              </Link>
+            </>
+          )}
+        </nav>
+
+        <div className={styles.mobileMeta}>
+          <div className={styles.mobileLangRow}>
+            {regionConfig.languages.map((loc) => (
+              <Link
+                key={loc}
+                href={switchLocale(loc)}
+                className={`${styles.mobileLangBtn} ${loc === lang ? styles.mobileLangActive : ''}`}
+              >
+                {loc.toUpperCase()}
+              </Link>
+            ))}
+          </div>
+
+          <select
+            className={styles.mobileCurrency}
+            value={currency}
+            onChange={(e) => setCurrency(e.target.value)}
+          >
+            {regionConfig.currencyOptions.map((cur) => (
+              <option key={cur} value={cur}>{cur}</option>
+            ))}
+          </select>
         </div>
       </div>
     </header>

@@ -9,14 +9,36 @@
     "register": "Sign up"
   },
   "home": {
-    "hero_title": "Help those who can't ask for themselves",
-    "hero_subtitle": "Shelter dogs need your help. Donate for treatment, food, or just take them for a walk.",
-    "cta": "See dogs",
-    "featured_title": "They need help now",
-    "how_title": "How it works",
+    "hero_title": "Every tail deserves a happy ending",
+    "hero_subtitle": "Shelter dogs in Montenegro need your help. Donate, walk, or foster — every little bit changes a life.",
+    "cta": "Meet the dogs",
+    "cta_secondary": "How it works",
+    "featured_title": "They need help right now",
+    "featured_subtitle": "These dogs are waiting for someone like you",
+    "view_all": "View all dogs",
+    "how_title": "How Tailo works",
+    "how_subtitle": "Three simple steps to make a real difference",
     "step1": "Choose a dog and read its story",
     "step2": "Help — donate for treatment, food, or foster care",
-    "step3": "Follow reports, and sign up for a walk if you'd like"
+    "step3": "Follow reports, and sign up for a walk if you'd like",
+    "stats_title": "Our impact in numbers",
+    "stats_dogs": "Dogs helped",
+    "stats_donated": "Donated",
+    "stats_walks": "Walks completed",
+    "stats_volunteers": "Active volunteers",
+    "ways_title": "Many ways to help",
+    "ways_subtitle": "Choose how you'd like to make a difference",
+    "way_donate_title": "Donate",
+    "way_donate_desc": "Fund treatment, food, and shelter. Every euro counts. 100% goes to the dogs.",
+    "way_walk_title": "Walk a dog",
+    "way_walk_desc": "Sign up for a walk in your city. Dogs need fresh air and socialization — and so do you.",
+    "way_foster_title": "Foster",
+    "way_foster_desc": "Give a dog a temporary home while we find them a forever family.",
+    "way_share_title": "Spread the word",
+    "way_share_desc": "Share a dog's profile on social media. Sometimes the right person just hasn't seen them yet.",
+    "cta_banner_title": "Ready to change a life?",
+    "cta_banner_subtitle": "Every dog on Tailo is real, verified by a shelter, and waiting for help. Start today.",
+    "cta_banner_button": "Find a dog to help"
   },
   "dogs": {
     "title": "Dogs",
@@ -72,7 +94,9 @@
     "goal_food": "Food",
     "goal_shelter": "Shelter",
     "goal_other": "Other",
-    "recurring": "Monthly"
+    "recurring": "Monthly",
+    "donate_title": "Send a donation directly",
+    "copied": "Copied!"
   },
   "progress": {
     "of": "of",

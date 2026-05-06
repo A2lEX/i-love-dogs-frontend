@@ -2,9 +2,10 @@
   position: sticky;
   top: 0;
   width: 100%;
-  height: 72px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
+  height: 64px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
   z-index: 100;
   display: flex;
@@ -18,111 +19,168 @@
   width: 100%;
 }
 
+/* ── Logo ── */
 .logo {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .logo:hover {
   opacity: 0.85;
 }
 
-.links {
+/* ── Desktop nav (center) ── */
+.desktopNav {
   display: flex;
-  gap: var(--spacing-lg);
+  gap: 32px;
   align-items: center;
+  margin-left: 48px;
 }
 
 .link {
   font-weight: 500;
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  position: relative;
+  padding: 4px 0;
+  transition: color var(--transition-fast);
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-base);
+  border-radius: 1px;
+  transition: width var(--transition-fast);
 }
 
 .link:hover {
   color: var(--text-primary);
 }
 
-.authGroup {
-  display: flex;
-  gap: var(--spacing-sm);
-  align-items: center;
+.link:hover::after {
+  width: 100%;
 }
 
+/* ── Desktop right group ── */
+.desktopRight {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* Lang switcher */
+.langSwitcher {
+  display: flex;
+  gap: 1px;
+  margin-right: 4px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.langBtn {
+  padding: 5px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all var(--transition-fast);
+  letter-spacing: 0.03em;
+}
+
+.langBtn:hover {
+  color: var(--text-primary);
+  background: #fff;
+}
+
+.langActive {
+  background: #fff;
+  color: var(--text-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.langActive:hover {
+  background: #fff;
+  color: var(--text-primary);
+}
+
+/* Currency */
+.currencySelect {
+  background: var(--bg-secondary);
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text-secondary);
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 24px;
+}
+
+/* Auth buttons */
 .btnLogin {
   font-weight: 500;
   color: var(--text-primary);
-  padding: 0.5rem 1rem;
-  font-size: 0.95rem;
+  padding: 6px 14px;
+  font-size: 0.88rem;
+  border-radius: 8px;
+  transition: background var(--transition-fast);
+}
+
+.btnLogin:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
 }
 
 .btnRegister {
-  font-weight: 500;
+  font-weight: 600;
   background: var(--accent-base);
   color: #fff;
-  padding: 0.5rem 1.25rem;
+  padding: 8px 18px;
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
+  transition: all var(--transition-fast);
 }
 
 .btnRegister:hover {
   background: var(--accent-hover);
   color: #fff;
+  transform: translateY(-1px);
 }
 
-.langSwitcher {
-  display: flex;
-  gap: 2px;
-  margin-right: var(--spacing-sm);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-.langBtn {
-  padding: 4px 8px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: background var(--transition-fast), color var(--transition-fast);
-}
-
-.langBtn:hover {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-}
-
-.langActive {
-  background: var(--accent-base);
-  color: #fff;
-}
-
-.langActive:hover {
-  background: var(--accent-base);
-  color: #fff;
-}
-
+/* User info */
 .userInfo {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
-  padding: 0 0.5rem;
+  gap: 12px;
 }
 
 .userName {
   font-weight: 600;
   color: var(--text-primary);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
 }
 
 .btnLogout {
   font-weight: 500;
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   background: none;
   border: 1px solid var(--border);
-  padding: 0.4rem 0.85rem;
+  padding: 5px 12px;
   border-radius: 6px;
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -131,15 +189,191 @@
 .btnLogout:hover {
   background: var(--bg-secondary);
   color: var(--text-primary);
-  border-color: var(--text-secondary);
 }
 
-.currencySelect {
-  background: transparent;
-  border: 1px solid var(--border-color, #ddd);
-  border-radius: 6px;
-  padding: 4px 8px;
-  font-size: 0.85rem;
+/* ── Burger ── */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  background: none;
+  border: none;
   cursor: pointer;
-  color: inherit;
+  z-index: 110;
+}
+
+.burger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.burgerOpen span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.burgerOpen span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.burgerOpen span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Overlay ── */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 90;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── Mobile panel ── */
+.mobilePanel {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  max-width: 85vw;
+  height: 100dvh;
+  background: #fff;
+  z-index: 105;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-direction: column;
+  padding: 80px 24px 32px;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.08);
+}
+
+.mobilePanelOpen {
+  transform: translateX(0);
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.mobileLink {
+  display: block;
+  padding: 14px 16px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: 12px;
+  transition: background var(--transition-fast);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  font-family: inherit;
+}
+
+.mobileLink:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Mobile meta (lang + currency) */
+.mobileMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+.mobileLangRow {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.mobileLangBtn {
+  flex: 1;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+  letter-spacing: 0.05em;
+}
+
+.mobileLangBtn:hover {
+  color: var(--text-primary);
+}
+
+.mobileLangActive {
+  background: #fff;
+  color: var(--text-primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mobileLangActive:hover {
+  color: var(--text-primary);
+}
+
+.mobileCurrency {
+  width: 100%;
+  background: var(--bg-secondary);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text-secondary);
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23999' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 32px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .desktopNav,
+  .desktopRight {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .overlay {
+    display: block;
+  }
+
+  .mobilePanel {
+    display: flex;
+  }
 }

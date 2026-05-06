@@ -4,9 +4,49 @@ import { getDictionary, hasLocale } from '../../dictionaries';
 import type { Locale } from '../../dictionaries';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { Gallery } from './Gallery';
+import { DonateSection } from './DonateSection';
 import styles from './DogPage.module.css';
 
 export const dynamic = 'force-dynamic';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://tailo.org';
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string; id: string }> }) {
+  const { lang, id } = await params;
+  if (!hasLocale(lang)) return {};
+  const dog = await getDog(id);
+  if (!dog) return { title: 'Not Found' };
+
+  const title = `${dog.name} — ${dog.breed}, ${dog.city}`;
+  const description = dog.description;
+  const url = `${SITE_URL}/${lang}/dogs/${id}`;
+  const image = dog.cover_photo_url || `${SITE_URL}/hero-dog.jpg`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+      languages: Object.fromEntries(
+        ['en', 'ru', 'sr'].map((l) => [l, `${SITE_URL}/${l}/dogs/${id}`])
+      ),
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: 'Tailo',
+      type: 'article',
+      images: [{ url: image, width: 800, height: 600, alt: dog.name }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [image],
+    },
+  };
+}
 
 interface DogDetail {
   id: string;
@@ -25,6 +65,12 @@ interface DogDetail {
     shelter_name: string;
     city: string;
     description: string | null;
+    payment_methods?: {
+      id: string;
+      type: string;
+      label: string;
+      value: string;
+    }[];
   };
   goals: {
     id: string;
@@ -85,6 +131,7 @@ export default async function DogPage({ params }: { params: Promise<{ lang: stri
   const d = dict.dogPage;
   const activeGoals = dog.goals.filter(g => g.status === 'active');
   const allPhotos = dog.photos.length > 0 ? dog.photos : (dog.cover_photo_url ? [dog.cover_photo_url] : []);
+  const paymentMethods = dog.curator?.payment_methods || [];
 
   return (
     <div className={styles.container}>
@@ -143,6 +190,13 @@ export default async function DogPage({ params }: { params: Promise<{ lang: stri
           </div>
         </section>
       )}
+
+      {/* Donate */}
+      <DonateSection
+        methods={paymentMethods}
+        title={d.donate_title}
+        copiedText={d.copied}
+      />
     </div>
   );
 }

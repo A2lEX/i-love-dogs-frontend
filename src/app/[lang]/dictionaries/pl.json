@@ -72,7 +72,9 @@
     "goal_food": "Karma",
     "goal_shelter": "Schronienie",
     "goal_other": "Inne",
-    "recurring": "Miesiecznie"
+    "recurring": "Miesiecznie",
+    "donate_title": "Wyslij darowizne bezposrednio",
+    "copied": "Skopiowano!"
   },
   "progress": {
     "of": "z",

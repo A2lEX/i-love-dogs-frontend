@@ -26,15 +26,65 @@ export async function generateStaticParams() {
   return Array.from(allLocales).map((lang) => ({ lang }));
 }
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://tailo.org';
+
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   if (!hasLocale(lang)) return {};
   const dict = await getDictionary(lang as Locale);
+
+  const title = `${dict.meta.title} — ${dict.meta.description}`;
+  const description = dict.meta.description;
+  const url = `${SITE_URL}/${lang}`;
+
   return {
-    title: dict.meta.title,
-    description: dict.meta.description,
+    title: {
+      default: title,
+      template: `%s | ${dict.meta.title}`,
+    },
+    description,
+    metadataBase: new URL(SITE_URL),
+    alternates: {
+      canonical: url,
+      languages: Object.fromEntries(
+        locales.map((l) => [l, `${SITE_URL}/${l}`])
+      ),
+    },
     icons: {
       icon: '/favicon.svg',
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: 'Tailo',
+      locale: lang,
+      type: 'website',
+      images: [
+        {
+          url: `${SITE_URL}/hero-dog.jpg`,
+          width: 1200,
+          height: 630,
+          alt: 'Tailo — help shelter dogs',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [`${SITE_URL}/hero-dog.jpg`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large' as const,
+        'max-snippet': -1,
+      },
     },
   };
 }

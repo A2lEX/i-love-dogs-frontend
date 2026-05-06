@@ -1,0 +1,119 @@
+.section {
+  margin-top: 48px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.methods {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.method {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  transition: border-color var(--transition-fast);
+}
+
+.method:hover {
+  border-color: var(--border-dark);
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.value {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-family: 'SF Mono', 'Monaco', 'Menlo', monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.value a {
+  color: var(--accent-base);
+  text-decoration: none;
+}
+
+.value a:hover {
+  text-decoration: underline;
+  color: var(--accent-hover);
+}
+
+.copyBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: #fff;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  font-family: inherit;
+}
+
+.copyBtn:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--border-dark);
+  color: var(--text-primary);
+}
+
+.copied {
+  color: var(--success);
+  border-color: var(--success);
+  background: #ecfdf5;
+}
+
+@media (max-width: 480px) {
+  .method {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .copyBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

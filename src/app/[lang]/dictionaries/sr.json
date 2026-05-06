@@ -9,14 +9,36 @@
     "register": "Registracija"
   },
   "home": {
-    "hero_title": "Pomozite onima koji ne mogu da traže sami",
-    "hero_subtitle": "Psi iz skloništa trebaju vašu pomoć. Donirajte za liječenje, hranu, ili ih izvedite u šetnju.",
-    "cta": "Pogledaj pse",
-    "featured_title": "Potrebna im je pomoć sada",
-    "how_title": "Kako funkcioniše",
+    "hero_title": "Svaki repić zaslužuje srećan kraj",
+    "hero_subtitle": "Psi iz crnogorskih skloništa trebaju vašu pomoć. Donirajte, prošetajte ili udomite — svaki doprinos mijenja život.",
+    "cta": "Upoznaj pse",
+    "cta_secondary": "Kako funkcioniše",
+    "featured_title": "Potrebna im je pomoć odmah",
+    "featured_subtitle": "Ovi psi čekaju nekoga poput vas",
+    "view_all": "Svi psi",
+    "how_title": "Kako Tailo radi",
+    "how_subtitle": "Tri jednostavna koraka da napravite razliku",
     "step1": "Izaberite psa i pročitajte njegovu priču",
     "step2": "Pomozite — donirajte za liječenje, hranu ili smještaj",
-    "step3": "Pratite izvještaje i prijavite se za šetnju"
+    "step3": "Pratite izvještaje i prijavite se za šetnju",
+    "stats_title": "Naš uticaj u brojevima",
+    "stats_dogs": "Pasa spaseno",
+    "stats_donated": "Donirano",
+    "stats_walks": "Završenih šetnji",
+    "stats_volunteers": "Aktivnih volontera",
+    "ways_title": "Mnogo načina da pomognete",
+    "ways_subtitle": "Izaberite kako želite da napravite razliku",
+    "way_donate_title": "Donirajte",
+    "way_donate_desc": "Finansirajte liječenje, hranu i smještaj. Svaki euro je bitan. 100% ide psima.",
+    "way_walk_title": "Prošetajte psa",
+    "way_walk_desc": "Prijavite se za šetnju u svom gradu. Psima treba svjež vazduh i socijalizacija.",
+    "way_foster_title": "Udomite",
+    "way_foster_desc": "Dajte psu privremeni dom dok mu nalazimo stalnu porodicu.",
+    "way_share_title": "Podijelite priču",
+    "way_share_desc": "Podijelite profil psa na društvenim mrežama. Ponekad prava osoba jednostavno još nije vidjela.",
+    "cta_banner_title": "Spremni da promijenite nečiji život?",
+    "cta_banner_subtitle": "Svaki pas na Tailu je stvaran, provjeren od strane skloništa i čeka pomoć.",
+    "cta_banner_button": "Nađi psa"
   },
   "dogs": {
     "title": "Psi",
@@ -72,7 +94,9 @@
     "goal_food": "Hrana",
     "goal_shelter": "Smještaj",
     "goal_other": "Ostalo",
-    "recurring": "Mjesečno"
+    "recurring": "Mjesečno",
+    "donate_title": "Pošaljite donaciju direktno",
+    "copied": "Kopirano!"
   },
   "progress": {
     "of": "od",

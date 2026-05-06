@@ -7,6 +7,16 @@ import { cookies } from 'next/headers';
 
 export const dynamic = 'force-dynamic';
 
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+  if (!hasLocale(lang)) return {};
+  const dict = await getDictionary(lang as Locale);
+  return {
+    title: dict.dogs.title,
+    description: dict.dogs.subtitle,
+  };
+}
+
 async function getDogs(): Promise<Dog[]> {
   try {
     const cookieStore = await cookies();
