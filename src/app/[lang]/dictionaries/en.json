@@ -98,6 +98,29 @@
     "donate_title": "Send a donation directly",
     "copied": "Copied!"
   },
+  "paymentMethods": {
+    "title": "Payment Methods",
+    "add": "Add",
+    "empty": "No payment methods yet. Add one so donors can send you money directly.",
+    "add_title": "Add Payment Method",
+    "edit_title": "Edit Payment Method",
+    "field_type": "Type",
+    "field_label": "Label",
+    "field_value": "Account / Address",
+    "placeholder_label": "e.g. PayPal EUR",
+    "placeholder_value": "e.g. shelter@email.com or IBAN",
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "activate": "Activate",
+    "deactivate": "Deactivate",
+    "confirm_delete": "Delete this payment method?",
+    "error_load": "Failed to load payment methods",
+    "error_save": "Failed to save",
+    "error_delete": "Failed to delete"
+  },
   "progress": {
     "of": "of",
     "currency": "RUB"

@@ -98,6 +98,29 @@
     "donate_title": "Отправить пожертвование напрямую",
     "copied": "Скопировано!"
   },
+  "paymentMethods": {
+    "title": "Способы оплаты",
+    "add": "Добавить",
+    "empty": "Способы оплаты ещё не добавлены. Добавьте, чтобы доноры могли отправлять деньги напрямую.",
+    "add_title": "Добавить способ оплаты",
+    "edit_title": "Редактировать способ оплаты",
+    "field_type": "Тип",
+    "field_label": "Название",
+    "field_value": "Счёт / Адрес",
+    "placeholder_label": "напр. PayPal EUR",
+    "placeholder_value": "напр. shelter@email.com или IBAN",
+    "save": "Сохранить",
+    "saving": "Сохраняем...",
+    "cancel": "Отмена",
+    "edit": "Редактировать",
+    "delete": "Удалить",
+    "activate": "Включить",
+    "deactivate": "Выключить",
+    "confirm_delete": "Удалить этот способ оплаты?",
+    "error_load": "Не удалось загрузить способы оплаты",
+    "error_save": "Не удалось сохранить",
+    "error_delete": "Не удалось удалить"
+  },
   "progress": {
     "of": "из",
     "currency": "руб."

@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
 
 import { CuratorDogsSection } from './CuratorDogsSection';
+import { PaymentMethodsSection } from './PaymentMethodsSection';
 
 export default function ProfilePage() {
   const { user, logout, isLoading } = useAuth();
@@ -68,6 +69,7 @@ export default function ProfilePage() {
         </div>
         
         {isCurator && <CuratorDogsSection />}
+        {isCurator && <PaymentMethodsSection />}
       </div>
     </div>
   );

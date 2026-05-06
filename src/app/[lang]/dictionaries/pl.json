@@ -76,6 +76,29 @@
     "donate_title": "Wyslij darowizne bezposrednio",
     "copied": "Skopiowano!"
   },
+  "paymentMethods": {
+    "title": "Metody płatności",
+    "add": "Dodaj",
+    "empty": "Brak metod płatności. Dodaj, aby darczyńcy mogli wysyłać pieniądze bezpośrednio.",
+    "add_title": "Dodaj metodę płatności",
+    "edit_title": "Edytuj metodę płatności",
+    "field_type": "Typ",
+    "field_label": "Nazwa",
+    "field_value": "Konto / Adres",
+    "placeholder_label": "np. PayPal EUR",
+    "placeholder_value": "np. shelter@email.com lub IBAN",
+    "save": "Zapisz",
+    "saving": "Zapisywanie...",
+    "cancel": "Anuluj",
+    "edit": "Edytuj",
+    "delete": "Usuń",
+    "activate": "Aktywuj",
+    "deactivate": "Dezaktywuj",
+    "confirm_delete": "Usunąć tę metodę płatności?",
+    "error_load": "Nie udało się załadować",
+    "error_save": "Nie udało się zapisać",
+    "error_delete": "Nie udało się usunąć"
+  },
   "progress": {
     "of": "z",
     "currency": "PLN"

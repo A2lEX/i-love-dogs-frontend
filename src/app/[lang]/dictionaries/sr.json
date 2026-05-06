@@ -98,6 +98,29 @@
     "donate_title": "Pošaljite donaciju direktno",
     "copied": "Kopirano!"
   },
+  "paymentMethods": {
+    "title": "Načini plaćanja",
+    "add": "Dodaj",
+    "empty": "Još nema načina plaćanja. Dodajte kako bi donatori mogli slati novac direktno.",
+    "add_title": "Dodaj način plaćanja",
+    "edit_title": "Uredi način plaćanja",
+    "field_type": "Tip",
+    "field_label": "Naziv",
+    "field_value": "Račun / Adresa",
+    "placeholder_label": "npr. PayPal EUR",
+    "placeholder_value": "npr. shelter@email.com ili IBAN",
+    "save": "Sačuvaj",
+    "saving": "Čuvanje...",
+    "cancel": "Otkaži",
+    "edit": "Uredi",
+    "delete": "Obriši",
+    "activate": "Aktiviraj",
+    "deactivate": "Deaktiviraj",
+    "confirm_delete": "Obrisati ovaj način plaćanja?",
+    "error_load": "Greška pri učitavanju",
+    "error_save": "Greška pri čuvanju",
+    "error_delete": "Greška pri brisanju"
+  },
   "progress": {
     "of": "od",
     "currency": "EUR"
