@@ -109,7 +109,7 @@ async function getDog(id: string): Promise<DogDetail | null> {
 async function getStories(dogId: string): Promise<StoryItem[]> {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://i-love-dog-api.girsa.ru/api/v1';
-    const res = await fetch(`${apiUrl}/reports/dog/${dogId}`, { next: { revalidate: 0 } });
+    const res = await fetch(`${apiUrl}/reports/dog/${dogId}`, { cache: 'no-store' });
     if (!res.ok) return [];
     const json = await res.json();
     return Array.isArray(json) ? json : json.data || [];
