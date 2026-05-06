@@ -1,0 +1,32 @@
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 var(--spacing-md, 16px);
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #6C63FF;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
+
+.card {
+  background: var(--bg-primary, #fff);
+  border: 1px solid var(--border, #eaeaea);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem;
+  color: #999;
+}

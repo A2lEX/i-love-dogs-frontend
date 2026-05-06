@@ -72,3 +72,27 @@
   margin-bottom: 2rem;
   color: var(--text-secondary);
 }
+
+.linkSection {
+  margin-top: 30px;
+  padding-top: 24px;
+  border-top: 1px solid #eaeaea;
+}
+
+.sectionLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.15s;
+}
+
+.sectionLink:hover {
+  background: #eef0f4;
+}

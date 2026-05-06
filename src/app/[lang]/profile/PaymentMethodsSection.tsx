@@ -57,12 +57,13 @@ export function PaymentMethodsSection() {
     try {
       const res = await api.get('/payment-methods/my');
       setMethods(Array.isArray(res.data) ? res.data : []);
+      setError('');
     } catch {
-      setError(t.error_load || 'Failed to load payment methods');
+      setError('Failed to load payment methods');
     } finally {
       setIsLoading(false);
     }
-  }, [t.error_load]);
+  }, []);
 
   useEffect(() => {
     fetchMethods();

@@ -9,7 +9,6 @@ import { Button } from '@/components/ui/Button';
 import Link from 'next/link';
 
 import { CuratorDogsSection } from './CuratorDogsSection';
-import { PaymentMethodsSection } from './PaymentMethodsSection';
 
 export default function ProfilePage() {
   const { user, logout, isLoading } = useAuth();
@@ -69,7 +68,13 @@ export default function ProfilePage() {
         </div>
         
         {isCurator && <CuratorDogsSection />}
-        {isCurator && <PaymentMethodsSection />}
+        {isCurator && (
+          <div className={styles.linkSection}>
+            <Link href={`/${lang}/profile/payment-methods`} className={styles.sectionLink}>
+              {dict.paymentMethods?.title || 'Payment Methods'} →
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
