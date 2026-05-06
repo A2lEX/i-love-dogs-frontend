@@ -1,0 +1,215 @@
+/* Stories circles bar */
+.bar {
+  margin-bottom: 32px;
+}
+
+.barTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+
+.circles {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+
+.circles::-webkit-scrollbar {
+  display: none;
+}
+
+.circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.circleRing {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 3px solid #6C63FF;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  transition: transform 0.15s;
+}
+
+.circle:hover .circleRing {
+  transform: scale(1.08);
+}
+
+.circleImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.circleIcon {
+  font-size: 1.5rem;
+}
+
+.circleTime {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Fullscreen viewer */
+.viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+/* Progress bars at top */
+.progressRow {
+  display: flex;
+  gap: 4px;
+  padding: 12px 16px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.progressTrack {
+  flex: 1;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: white;
+  border-radius: 2px;
+  transition: width 0.05s linear;
+}
+
+/* Header */
+.viewerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 16px 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+}
+
+.viewerMeta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.viewerName {
+  font-weight: 700;
+  color: white;
+  font-size: 0.95rem;
+}
+
+.viewerTime {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.8rem;
+}
+
+.viewerType {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.viewerClose {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+/* Body */
+.viewerBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px 24px;
+  overflow-y: auto;
+  cursor: default;
+}
+
+.viewerImage {
+  max-width: 100%;
+  max-height: 60vh;
+  border-radius: 12px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.viewerText {
+  max-width: 500px;
+  text-align: center;
+}
+
+.viewerText p {
+  color: white;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+
+.viewerAuthor {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .circleRing {
+    width: 60px;
+    height: 60px;
+  }
+
+  .circles {
+    gap: 12px;
+  }
+
+  .viewerImage {
+    max-height: 50vh;
+  }
+
+  .viewerText p {
+    font-size: 1rem;
+  }
+}

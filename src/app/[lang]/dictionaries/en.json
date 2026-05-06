@@ -96,7 +96,17 @@
     "goal_other": "Other",
     "recurring": "Monthly",
     "donate_title": "Send a donation directly",
-    "copied": "Copied!"
+    "copied": "Copied!",
+    "stories_title": "Updates",
+    "story_general": "Update",
+    "story_medical": "Medical",
+    "story_walk": "Walk",
+    "story_adoption": "Adoption",
+    "add_story": "Post update",
+    "story_content": "What's new?",
+    "story_type": "Type",
+    "story_photos": "Photos (URLs)",
+    "story_posted": "Posted!"
   },
   "paymentMethods": {
     "title": "Payment Methods",

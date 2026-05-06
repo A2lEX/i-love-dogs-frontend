@@ -74,7 +74,17 @@
     "goal_other": "Inne",
     "recurring": "Miesiecznie",
     "donate_title": "Wyslij darowizne bezposrednio",
-    "copied": "Skopiowano!"
+    "copied": "Skopiowano!",
+    "stories_title": "Aktualnosci",
+    "story_general": "Aktualizacja",
+    "story_medical": "Leczenie",
+    "story_walk": "Spacer",
+    "story_adoption": "Adopcja",
+    "add_story": "Dodaj wpis",
+    "story_content": "Co nowego?",
+    "story_type": "Typ",
+    "story_photos": "Zdjecia (linki)",
+    "story_posted": "Opublikowano!"
   },
   "paymentMethods": {
     "title": "Metody płatności",

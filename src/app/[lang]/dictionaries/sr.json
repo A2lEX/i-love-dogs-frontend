@@ -96,7 +96,17 @@
     "goal_other": "Ostalo",
     "recurring": "Mjesečno",
     "donate_title": "Pošaljite donaciju direktno",
-    "copied": "Kopirano!"
+    "copied": "Kopirano!",
+    "stories_title": "Novosti",
+    "story_general": "Ažuriranje",
+    "story_medical": "Liječenje",
+    "story_walk": "Šetnja",
+    "story_adoption": "Udomljavanje",
+    "add_story": "Objavi novost",
+    "story_content": "Šta je novo?",
+    "story_type": "Tip",
+    "story_photos": "Fotografije (linkovi)",
+    "story_posted": "Objavljeno!"
   },
   "paymentMethods": {
     "title": "Načini plaćanja",

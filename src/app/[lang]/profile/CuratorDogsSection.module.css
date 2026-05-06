@@ -99,9 +99,14 @@
 .actions {
   margin-top: auto;
   display: flex;
-  justify-content: stretch;
+  gap: 6px;
 }
 
 .editBtn {
-  width: 100%;
+  flex: 1;
+}
+
+.storyBtn {
+  flex: 1;
+  font-size: 0.8rem !important;
 }

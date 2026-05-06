@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useCuratorDogs } from '@/hooks/useCuratorDogs';
 import { DogManagementForm, DogData } from '@/components/dogs/DogManagementForm';
+import { StoryForm } from './StoryForm';
 import { ResponsiveModal } from '@/components/ui/ResponsiveModal';
 import { Button } from '@/components/ui/Button';
 import styles from './CuratorDogsSection.module.css';
@@ -9,6 +10,7 @@ export function CuratorDogsSection() {
   const { dogs, isLoading, error, refetch } = useCuratorDogs();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingDog, setEditingDog] = useState<DogData | undefined>(undefined);
+  const [storyDogId, setStoryDogId] = useState<string | null>(null);
 
   const openModal = (dog?: DogData) => {
     setEditingDog(dog);
@@ -58,6 +60,9 @@ export function CuratorDogsSection() {
                   <Button variant="secondary" onClick={() => openModal(dog)} className={styles.editBtn}>
                     Edit
                   </Button>
+                  <Button variant="ghost" onClick={() => setStoryDogId(dog.id!)} className={styles.storyBtn}>
+                    + Story
+                  </Button>
                 </div>
               </div>
             </div>
@@ -65,16 +70,30 @@ export function CuratorDogsSection() {
         </div>
       )}
 
-      <ResponsiveModal 
-        isOpen={isModalOpen} 
-        onClose={closeModal} 
+      <ResponsiveModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
         title={editingDog ? 'Edit Dog' : 'Add New Dog'}
       >
-        <DogManagementForm 
-          initialData={editingDog} 
-          onSuccess={handleSuccess} 
-          onCancel={closeModal} 
+        <DogManagementForm
+          initialData={editingDog}
+          onSuccess={handleSuccess}
+          onCancel={closeModal}
         />
+      </ResponsiveModal>
+
+      <ResponsiveModal
+        isOpen={!!storyDogId}
+        onClose={() => setStoryDogId(null)}
+        title="Post Story"
+      >
+        {storyDogId && (
+          <StoryForm
+            dogId={storyDogId}
+            onSuccess={() => setStoryDogId(null)}
+            onCancel={() => setStoryDogId(null)}
+          />
+        )}
       </ResponsiveModal>
     </div>
   );

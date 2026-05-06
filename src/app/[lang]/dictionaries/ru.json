@@ -96,7 +96,17 @@
     "goal_other": "Другое",
     "recurring": "Ежемесячно",
     "donate_title": "Отправить пожертвование напрямую",
-    "copied": "Скопировано!"
+    "copied": "Скопировано!",
+    "stories_title": "Новости",
+    "story_general": "Обновление",
+    "story_medical": "Лечение",
+    "story_walk": "Прогулка",
+    "story_adoption": "Усыновление",
+    "add_story": "Написать новость",
+    "story_content": "Что нового?",
+    "story_type": "Тип",
+    "story_photos": "Фото (ссылки)",
+    "story_posted": "Опубликовано!"
   },
   "paymentMethods": {
     "title": "Способы оплаты",

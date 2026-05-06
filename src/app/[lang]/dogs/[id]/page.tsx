@@ -5,6 +5,7 @@ import type { Locale } from '../../dictionaries';
 import { ProgressBar } from '@/components/ui/ProgressBar';
 import { Gallery } from './Gallery';
 import { DonateSection } from './DonateSection';
+import { StoriesBar } from './StoriesBar';
 import styles from './DogPage.module.css';
 
 export const dynamic = 'force-dynamic';
@@ -84,6 +85,15 @@ interface DogDetail {
   }[];
 }
 
+interface StoryItem {
+  id: string;
+  type: string;
+  content: string;
+  photo_urls: string[];
+  created_at: string;
+  curator: { name: string };
+}
+
 async function getDog(id: string): Promise<DogDetail | null> {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://i-love-dog-api.girsa.ru/api/v1';
@@ -93,6 +103,18 @@ async function getDog(id: string): Promise<DogDetail | null> {
     return json.data || json;
   } catch {
     return null;
+  }
+}
+
+async function getStories(dogId: string): Promise<StoryItem[]> {
+  try {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://i-love-dog-api.girsa.ru/api/v1';
+    const res = await fetch(`${apiUrl}/reports/dog/${dogId}`, { next: { revalidate: 0 } });
+    if (!res.ok) return [];
+    const json = await res.json();
+    return Array.isArray(json) ? json : json.data || [];
+  } catch {
+    return [];
   }
 }
 
@@ -121,9 +143,10 @@ export default async function DogPage({ params }: { params: Promise<{ lang: stri
   const { lang, id } = await params;
   if (!hasLocale(lang)) notFound();
 
-  const [dict, dog] = await Promise.all([
+  const [dict, dog, stories] = await Promise.all([
     getDictionary(lang as Locale),
     getDog(id),
+    getStories(id),
   ]);
 
   if (!dog) notFound();
@@ -164,6 +187,19 @@ export default async function DogPage({ params }: { params: Promise<{ lang: stri
           )}
         </div>
       </div>
+
+      {/* Stories */}
+      <StoriesBar
+        stories={stories}
+        dogName={dog.name}
+        labels={{
+          stories_title: d.stories_title || 'Updates',
+          story_general: d.story_general || 'Update',
+          story_medical: d.story_medical || 'Medical',
+          story_walk: d.story_walk || 'Walk',
+          story_adoption: d.story_adoption || 'Adoption',
+        }}
+      />
 
       {/* Goals */}
       {activeGoals.length > 0 && (
