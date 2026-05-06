@@ -8,7 +8,6 @@ import styles from './StoryForm.module.css';
 interface StoryFormProps {
   dogId: string;
   onSuccess: () => void;
-  onCancel: () => void;
 }
 
 const TYPES = [
@@ -18,12 +17,13 @@ const TYPES = [
   { value: 'adoption', label: 'Adoption', icon: '\u{1F3E0}' },
 ];
 
-export function StoryForm({ dogId, onSuccess, onCancel }: StoryFormProps) {
+export function StoryForm({ dogId, onSuccess }: StoryFormProps) {
   const [type, setType] = useState('general');
   const [content, setContent] = useState('');
   const [photoUrl, setPhotoUrl] = useState('');
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
+  const [posted, setPosted] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,6 +38,10 @@ export function StoryForm({ dogId, onSuccess, onCancel }: StoryFormProps) {
         content,
         photo_urls,
       });
+      setContent('');
+      setPhotoUrl('');
+      setPosted(true);
+      setTimeout(() => setPosted(false), 2000);
       onSuccess();
     } catch {
       setError('Failed to post story');
@@ -66,9 +70,9 @@ export function StoryForm({ dogId, onSuccess, onCancel }: StoryFormProps) {
         className={styles.textarea}
         value={content}
         onChange={(e) => setContent(e.target.value)}
-        placeholder="Tell the story... What happened today?"
+        placeholder="What's new with this dog?"
         required
-        rows={4}
+        rows={3}
       />
 
       <input
@@ -82,11 +86,8 @@ export function StoryForm({ dogId, onSuccess, onCancel }: StoryFormProps) {
       {error && <div className={styles.error}>{error}</div>}
 
       <div className={styles.actions}>
-        <Button type="button" variant="secondary" onClick={onCancel}>
-          Cancel
-        </Button>
         <Button type="submit" disabled={saving || !content.trim()}>
-          {saving ? 'Posting...' : 'Post'}
+          {posted ? '✓ Posted!' : saving ? 'Posting...' : 'Post Story'}
         </Button>
       </div>
     </form>

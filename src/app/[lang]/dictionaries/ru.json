@@ -108,6 +108,16 @@
     "story_photos": "Фото (ссылки)",
     "story_posted": "Опубликовано!"
   },
+  "dogManage": {
+    "goals_title": "Цели сбора",
+    "stories_title": "Истории",
+    "add_goal": "+ Цель",
+    "add_goal_title": "Добавить цель",
+    "no_goals": "Целей пока нет. Добавьте, чтобы начать сбор средств.",
+    "complete": "Завершить",
+    "cancel_goal": "Отменить",
+    "reactivate": "Возобновить"
+  },
   "paymentMethods": {
     "title": "Способы оплаты",
     "add": "Добавить",

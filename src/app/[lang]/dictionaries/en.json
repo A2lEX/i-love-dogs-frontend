@@ -108,6 +108,16 @@
     "story_photos": "Photos (URLs)",
     "story_posted": "Posted!"
   },
+  "dogManage": {
+    "goals_title": "Goals",
+    "stories_title": "Stories",
+    "add_goal": "+ Goal",
+    "add_goal_title": "Add Goal",
+    "no_goals": "No goals yet. Add one to start fundraising.",
+    "complete": "Complete",
+    "cancel_goal": "Cancel",
+    "reactivate": "Reactivate"
+  },
   "paymentMethods": {
     "title": "Payment Methods",
     "add": "Add",

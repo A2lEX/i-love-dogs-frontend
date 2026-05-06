@@ -86,6 +86,16 @@
     "story_photos": "Zdjecia (linki)",
     "story_posted": "Opublikowano!"
   },
+  "dogManage": {
+    "goals_title": "Cele",
+    "stories_title": "Historie",
+    "add_goal": "+ Cel",
+    "add_goal_title": "Dodaj cel",
+    "no_goals": "Brak celów. Dodaj, aby rozpocząć zbiórkę.",
+    "complete": "Zakończ",
+    "cancel_goal": "Anuluj",
+    "reactivate": "Wznów"
+  },
   "paymentMethods": {
     "title": "Metody płatności",
     "add": "Dodaj",

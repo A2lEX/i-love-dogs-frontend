@@ -1,0 +1,296 @@
+.container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 16px;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #6C63FF;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
+
+.loading {
+  text-align: center;
+  padding: 4rem;
+  color: #999;
+}
+
+/* Dog header */
+.dogHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 2rem;
+}
+
+.dogAvatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #eaeaea;
+}
+
+.dogName {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #222;
+}
+
+/* Sections */
+.section {
+  background: white;
+  border: 1px solid #eaeaea;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.empty {
+  text-align: center;
+  padding: 32px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  color: #888;
+  font-size: 0.95rem;
+}
+
+/* Goals */
+.goalsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.goalCard {
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  padding: 18px;
+  transition: opacity 0.2s;
+}
+
+.goalInactive {
+  opacity: 0.5;
+}
+
+.goalTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.goalIcon {
+  font-size: 1.1rem;
+}
+
+.goalCategory {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #999;
+  font-weight: 600;
+}
+
+.goalBadge {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  background: #f0eeff;
+  color: #6C63FF;
+  border-radius: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.goalStatus {
+  margin-left: auto;
+  font-size: 0.7rem;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status_active {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.status_completed {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.status_cancelled {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.goalTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.goalDesc {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.goalProgress {
+  margin-bottom: 12px;
+}
+
+.goalBar {
+  height: 6px;
+  background: #f0f0f0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.goalFill {
+  height: 100%;
+  background: linear-gradient(90deg, #6C63FF, #3B82F6);
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+
+.goalAmount {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.goalActions {
+  display: flex;
+  gap: 8px;
+}
+
+.actionBtn, .actionBtnDanger {
+  padding: 6px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+.actionBtn:hover {
+  background: #f0f0f0;
+}
+
+.actionBtnDanger {
+  color: #ef4444;
+  border-color: #fecaca;
+}
+
+.actionBtnDanger:hover {
+  background: #fef2f2;
+}
+
+/* Stories */
+.storyFormInline {
+  margin-bottom: 24px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.storiesList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.storyCard {
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.storyTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.storyType {
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.storyTime {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.storyImage {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.storyContent {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+
+.storyAuthor {
+  font-size: 0.8rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+@media (max-width: 480px) {
+  .dogHeader {
+    gap: 12px;
+  }
+
+  .dogName {
+    font-size: 1.4rem;
+  }
+
+  .section {
+    padding: 16px;
+  }
+
+  .goalActions {
+    flex-wrap: wrap;
+  }
+}

@@ -106,7 +106,21 @@
   flex: 1;
 }
 
-.storyBtn {
+.manageLink {
   flex: 1;
-  font-size: 0.8rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  background: #f0eeff;
+  color: #6C63FF;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.manageLink:hover {
+  background: #e4e0ff;
 }

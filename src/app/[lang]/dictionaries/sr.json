@@ -108,6 +108,16 @@
     "story_photos": "Fotografije (linkovi)",
     "story_posted": "Objavljeno!"
   },
+  "dogManage": {
+    "goals_title": "Ciljevi",
+    "stories_title": "Priče",
+    "add_goal": "+ Cilj",
+    "add_goal_title": "Dodaj cilj",
+    "no_goals": "Još nema ciljeva. Dodajte jedan da započnete prikupljanje sredstava.",
+    "complete": "Završi",
+    "cancel_goal": "Otkaži",
+    "reactivate": "Ponovo aktiviraj"
+  },
   "paymentMethods": {
     "title": "Načini plaćanja",
     "add": "Dodaj",
