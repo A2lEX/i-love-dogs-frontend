@@ -56,13 +56,17 @@ export function PaymentMethodsSection() {
   const fetchMethods = useCallback(async () => {
     try {
       const res = await api.get('/payment-methods/my');
-      setMethods(Array.isArray(res.data) ? res.data : []);
+      const raw = res.data;
+      const data = Array.isArray(raw) ? raw : raw?.data && Array.isArray(raw.data) ? raw.data : [];
+      setMethods(data);
       setError('');
-    } catch {
-      setError('Failed to load payment methods');
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      setError(`${t.error_load || 'Failed to load payment methods'}: ${msg}`);
     } finally {
       setIsLoading(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
