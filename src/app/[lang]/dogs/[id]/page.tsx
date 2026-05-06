@@ -162,6 +162,19 @@ export default async function DogPage({ params }: { params: Promise<{ lang: stri
         &larr; {d.back}
       </Link>
 
+      {/* Stories */}
+      <StoriesBar
+        stories={stories}
+        dogName={dog.name}
+        labels={{
+          stories_title: d.stories_title || 'Updates',
+          story_general: d.story_general || 'Update',
+          story_medical: d.story_medical || 'Medical',
+          story_walk: d.story_walk || 'Walk',
+          story_adoption: d.story_adoption || 'Adoption',
+        }}
+      />
+
       <div className={styles.layout}>
         {/* Gallery */}
         <Gallery photos={allPhotos} alt={dog.name} />
@@ -187,19 +200,6 @@ export default async function DogPage({ params }: { params: Promise<{ lang: stri
           )}
         </div>
       </div>
-
-      {/* Stories */}
-      <StoriesBar
-        stories={stories}
-        dogName={dog.name}
-        labels={{
-          stories_title: d.stories_title || 'Updates',
-          story_general: d.story_general || 'Update',
-          story_medical: d.story_medical || 'Medical',
-          story_walk: d.story_walk || 'Walk',
-          story_adoption: d.story_adoption || 'Adoption',
-        }}
-      />
 
       {/* Goals */}
       {activeGoals.length > 0 && (
