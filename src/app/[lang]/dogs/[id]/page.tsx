@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getDictionary, hasLocale } from '../../dictionaries';
 import type { Locale } from '../../dictionaries';
 import { ProgressBar } from '@/components/ui/ProgressBar';
+import { Gallery } from './Gallery';
 import styles from './DogPage.module.css';
 
 export const dynamic = 'force-dynamic';
@@ -51,7 +52,7 @@ async function getDog(id: string): Promise<DogDetail | null> {
 
 function formatAge(months: number, lang: Locale): string {
   const labels: Record<string, { m: string; y: string }> = { en: { m: 'mo', y: 'y' }, ru: { m: 'мес', y: 'г' }, pl: { m: 'mies', y: 'l' }, sr: { m: 'mj', y: 'g' } };
-  const l = labels[lang];
+  const l = labels[lang] || labels.en;
   if (months < 12) return `${months} ${l.m}`;
   const years = Math.floor(months / 12);
   const m = months % 12;
@@ -93,27 +94,7 @@ export default async function DogPage({ params }: { params: Promise<{ lang: stri
 
       <div className={styles.layout}>
         {/* Gallery */}
-        <div className={styles.gallery}>
-          <div className={styles.mainImage}>
-            <img
-              src={allPhotos[0] || '/placeholder-dog.svg'}
-              alt={dog.name}
-              className={styles.image}
-            />
-          </div>
-          {allPhotos.length > 1 && (
-            <div className={styles.thumbs}>
-              {allPhotos.slice(1, 5).map((url, i) => (
-                <div key={i} className={styles.thumb}>
-                  <img src={url} alt={`${dog.name} ${i + 2}`} className={styles.thumbImg} />
-                </div>
-              ))}
-              {allPhotos.length > 5 && (
-                <div className={styles.thumbMore}>+{allPhotos.length - 5}</div>
-              )}
-            </div>
-          )}
-        </div>
+        <Gallery photos={allPhotos} alt={dog.name} />
 
         {/* Info */}
         <div className={styles.info}>
