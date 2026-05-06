@@ -4,7 +4,7 @@ import { regions, defaultRegion } from '@/config/regions';
 // Known base domains (without subdomain) that should NOT be treated as having a subdomain
 const BASE_DOMAINS = [
   'vercel.app',
-  'dogcare.ru',
+  'tailo.org',
 ];
 
 function getSubdomain(hostname: string): string | null {
@@ -17,7 +17,7 @@ function getSubdomain(hostname: string): string | null {
 
   // Check against known base domains
   // e.g. i-love-dogs-frontend.vercel.app → no subdomain (base domain is *.vercel.app)
-  // e.g. me.dogcare.ru → subdomain "me" (base domain is dogcare.ru)
+  // e.g. me.tailo.org → subdomain "me" (base domain is tailo.org)
   for (const base of BASE_DOMAINS) {
     if (hostname.endsWith(base)) {
       const prefix = hostname.slice(0, -(base.length + 1)); // remove ".base"

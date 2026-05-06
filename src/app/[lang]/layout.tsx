@@ -33,6 +33,9 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   return {
     title: dict.meta.title,
     description: dict.meta.description,
+    icons: {
+      icon: '/favicon.svg',
+    },
   };
 }
 

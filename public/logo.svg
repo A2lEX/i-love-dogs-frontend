@@ -1,5 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 28" fill="none">
-  <text x="0" y="22" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="22" font-weight="700" letter-spacing="-0.5">
-    <tspan fill="#1a1a1a">Dog</tspan><tspan fill="#999999">Care</tspan>
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 40" fill="none">
+  <defs>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6C63FF"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Paw icon -->
+  <g transform="translate(2, 5)">
+    <!-- Main pad -->
+    <ellipse cx="16" cy="21" rx="8.5" ry="7.5" fill="url(#accent)"/>
+    <!-- Toe pads -->
+    <circle cx="7" cy="11" r="3.8" fill="url(#accent)"/>
+    <circle cx="16" cy="7" r="3.8" fill="url(#accent)"/>
+    <circle cx="25" cy="11" r="3.8" fill="url(#accent)"/>
+  </g>
+
+  <!-- TAILO -->
+  <text x="44" y="27" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" letter-spacing="2" fill="#2D2B55">TAILO</text>
+
+  <!-- Dot separator -->
+  <circle cx="130" cy="23" r="2.5" fill="url(#accent)"/>
+
+  <!-- ORG -->
+  <text x="138" y="27" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="22" font-weight="400" letter-spacing="2" fill="#9CA3AF">ORG</text>
 </svg>

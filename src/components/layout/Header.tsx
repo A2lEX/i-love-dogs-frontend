@@ -23,7 +23,7 @@ export default function Header() {
     <header className={styles.header}>
       <div className={`container ${styles.nav}`}>
         <Link href={`/${lang}`} className={styles.logo}>
-          <img src="/logo.svg" alt="DogCare" width={140} height={32} />
+          <img src="/logo.svg" alt="Tailo" width={140} height={32} />
         </Link>
         <div className={styles.links}>
           <Link href={`/${lang}/dogs`} className={styles.link}>
