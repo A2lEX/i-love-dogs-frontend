@@ -21,7 +21,7 @@ interface DogCardProps {
 
 function formatAge(months: number, lang: Locale): string {
   const labels: Record<string, { m: string; y: string }> = { en: { m: 'mo', y: 'y' }, ru: { m: 'мес', y: 'г' }, pl: { m: 'mies', y: 'l' }, sr: { m: 'mj', y: 'g' } };
-  const l = labels[lang];
+  const l = labels[lang] || labels.en;
   if (months < 12) {
     return `${months} ${l.m}`;
   }
