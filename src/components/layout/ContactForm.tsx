@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useDictionary } from '@/contexts/DictionaryContext';
 import styles from './ContactForm.module.css';
 
+import { api } from '@/lib/api';
+
 export default function ContactForm() {
   const { dict } = useDictionary();
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -14,20 +16,15 @@ export default function ContactForm() {
 
     const formData = new FormData(e.currentTarget);
     const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      message: formData.get('message'),
+      name: formData.get('name') as string,
+      email: formData.get('email') as string,
+      message: formData.get('message') as string,
     };
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api/v1';
-      const res = await fetch(`${apiUrl}/reports/contact`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+      const res = await api.post('/reports/contact', data);
 
-      if (res.ok) {
+      if (res.status === 200 || res.status === 201) {
         setStatus('success');
         (e.target as HTMLFormElement).reset();
       } else {
