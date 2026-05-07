@@ -141,6 +141,28 @@
     "error_save": "Greška pri čuvanju",
     "error_delete": "Greška pri brisanju"
   },
+  "footer": {
+    "about": "O nama",
+    "success_stories": "Uspešne priče",
+    "contact": "Kontakt",
+    "privacy": "Politika privatnosti",
+    "terms": "Uslovi korišćenja",
+    "help": "Kako pomoći",
+    "donate": "Donirajte",
+    "volunteer": "Volontirajte",
+    "share": "Podelite"
+  },
+  "contact": {
+    "title": "Kontaktirajte nas",
+    "subtitle": "Imate pitanje ili želite da volontirate? Pošaljite nam poruku.",
+    "name": "Ime",
+    "email": "Email",
+    "message": "Poruka",
+    "send": "Pošalji poruku",
+    "sending": "Slanje...",
+    "success": "Poruka je poslata! Javićemo vam se uskoro.",
+    "error": "Nešto je pošlo naopako. Molimo pokušajte ponovo."
+  },
   "progress": {
     "of": "od",
     "currency": "EUR"

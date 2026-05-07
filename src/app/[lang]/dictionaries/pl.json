@@ -119,6 +119,28 @@
     "error_save": "Nie udało się zapisać",
     "error_delete": "Nie udało się usunąć"
   },
+  "footer": {
+    "about": "O nas",
+    "success_stories": "Szczęśliwe historie",
+    "contact": "Kontakt",
+    "privacy": "Polityka prywatności",
+    "terms": "Regulamin",
+    "help": "Jak pomóc",
+    "donate": "Wesprzyj",
+    "volunteer": "Wolontariat",
+    "share": "Udostępnij"
+  },
+  "contact": {
+    "title": "Skontaktuj się z nami",
+    "subtitle": "Masz pytania lub chcesz zostać wolontariuszem? Napisz do nas.",
+    "name": "Imię",
+    "email": "Email",
+    "message": "Wiadomość",
+    "send": "Wyślij wiadomość",
+    "sending": "Wysyłanie...",
+    "success": "Wiadomość wysłana! Odpоwiemy tak szybko, jak to możliwe.",
+    "error": "Coś poszło nie tak. Spróbuj ponownie później."
+  },
   "progress": {
     "of": "z",
     "currency": "PLN"

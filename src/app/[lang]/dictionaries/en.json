@@ -141,6 +141,28 @@
     "error_save": "Failed to save",
     "error_delete": "Failed to delete"
   },
+  "footer": {
+    "about": "About",
+    "success_stories": "Success Stories",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "help": "How to help",
+    "donate": "Donate",
+    "volunteer": "Volunteer",
+    "share": "Share stories"
+  },
+  "contact": {
+    "title": "Get in touch",
+    "subtitle": "Have a question or want to volunteer? Send us a message.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending...",
+    "success": "Message sent! We will get back to you soon.",
+    "error": "Something went wrong. Please try again."
+  },
   "progress": {
     "of": "of",
     "currency": "RUB"
