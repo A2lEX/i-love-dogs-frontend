@@ -10,7 +10,7 @@ interface Dog {
 
 async function getAllDogs(): Promise<Dog[]> {
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api/v1';
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://i-love-dog-api.girsa.ru/api/v1';
     const res = await fetch(`${apiUrl}/dogs?limit=100`, { next: { revalidate: 3600 } });
     if (!res.ok) return [];
     const data = await res.json();

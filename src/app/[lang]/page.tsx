@@ -13,7 +13,7 @@ async function getFeaturedDogs(): Promise<Dog[]> {
   try {
     const cookieStore = await cookies();
     const country = cookieStore.get('x-country')?.value || 'ME';
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api/v1';
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://i-love-dog-api.girsa.ru/api/v1';
     const res = await fetch(`${apiUrl}/dogs?limit=4&country=${country}`, {
       next: { revalidate: 0 },
     });
