@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import DogCard, { Dog } from '@/components/dogs/DogCard';
+import DogCard from '@/components/dogs/DogCard';
+import { Dog } from '@/types';
 import styles from './page.module.css';
 import { notFound } from 'next/navigation';
 import { getDictionary, hasLocale } from './dictionaries';

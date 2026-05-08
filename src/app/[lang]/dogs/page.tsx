@@ -1,4 +1,6 @@
-import DogCard, { Dog } from '@/components/dogs/DogCard';
+import DogCard from '@/components/dogs/DogCard';
+import { Dog } from '@/types';
+import { DogListClient } from '@/components/dogs/DogListClient';
 import styles from './DogsPage.module.css';
 import { notFound } from 'next/navigation';
 import { getDictionary, hasLocale } from '../dictionaries';
@@ -51,17 +53,11 @@ export default async function DogsPage({ params }: { params: Promise<{ lang: str
         <p className={styles.subtitle}>{dict.dogs.subtitle}</p>
       </header>
 
-      {dogs.length > 0 ? (
-        <div className={styles.grid}>
-          {dogs.map((dog) => (
-            <DogCard key={dog.id} dog={dog} lang={lang as Locale} />
-          ))}
-        </div>
-      ) : (
-        <div className={styles.empty}>
-          <p>{dict.dogs.empty}</p>
-        </div>
-      )}
+      <DogListClient 
+        initialDogs={dogs} 
+        lang={lang as Locale} 
+        emptyText={dict.dogs.empty} 
+      />
     </div>
   );
 }

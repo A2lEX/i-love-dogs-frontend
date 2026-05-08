@@ -6,6 +6,8 @@ export interface Dog {
   gender: 'male' | 'female' | 'unknown';
   description: string;
   city: string;
+  city_lat?: number;
+  city_lng?: number;
   status: 'active' | 'adopted' | 'deceased' | 'archived';
   cover_photo_url: string | null;
   curator_id: string;

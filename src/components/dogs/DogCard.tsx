@@ -3,16 +3,7 @@ import Link from 'next/link';
 import styles from './DogCard.module.css';
 import type { Locale } from '@/i18n/config';
 
-export interface Dog {
-  id: string;
-  name: string;
-  breed: string;
-  age_months: number;
-  gender: 'male' | 'female' | 'unknown';
-  description: string;
-  city: string;
-  cover_photo_url: string | null;
-}
+import { Dog } from '@/types';
 
 interface DogCardProps {
   dog: Dog;

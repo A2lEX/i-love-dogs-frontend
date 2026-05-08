@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PhotoGalleryEditor } from './PhotoGalleryEditor';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
+import { CityAutocomplete, CityResult } from '@/components/ui/CityAutocomplete';
 import styles from './DogManagementForm.module.css';
 import { api } from '@/lib/api';
 import { Dog } from '@/types';
@@ -13,6 +14,8 @@ export interface DogData {
   age_months: number;
   gender: Dog['gender'];
   city: string;
+  city_lat?: number;
+  city_lng?: number;
   description: string;
   status: Dog['status'] | 'on_hold' | 'medical';
   photos: string[];
@@ -35,17 +38,30 @@ export function DogManagementForm({ initialData, onSuccess, onCancel }: DogManag
   const [ageMonths, setAgeMonths] = useState(initialData?.age_months || 12);
   const [gender, setGender] = useState<Dog['gender']>(initialData?.gender || 'male');
   const [city, setCity] = useState(initialData?.city || '');
+  const [cityLat, setCityLat] = useState<number | undefined>(initialData?.city_lat);
+  const [cityLng, setCityLng] = useState<number | undefined>(initialData?.city_lng);
   const [description, setDescription] = useState(initialData?.description || '');
   const [status, setStatus] = useState<DogData['status']>(initialData?.status || 'active');
   const [photos, setPhotos] = useState<string[]>(initialData?.photos || []);
   const [coverPhoto, setCoverPhoto] = useState(initialData?.cover_photo_url || (photos.length > 0 ? photos[0] : ''));
+
+  const handleCityChange = (cityName: string, result?: CityResult) => {
+    setCity(cityName);
+    if (result) {
+      setCityLat(result.lat);
+      setCityLng(result.lng);
+    } else {
+      setCityLat(undefined);
+      setCityLng(undefined);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
 
-    const payload: Partial<DogData> = {
+    const payload: Record<string, unknown> = {
       name,
       breed,
       age_months: Number(ageMonths),
@@ -55,6 +71,12 @@ export function DogManagementForm({ initialData, onSuccess, onCancel }: DogManag
       status,
       photos: photos.filter(p => !!p),
     };
+
+    // Include coordinates when available
+    if (cityLat !== undefined && cityLng !== undefined) {
+      payload.city_lat = cityLat;
+      payload.city_lng = cityLng;
+    }
 
     if (coverPhoto) {
       payload.cover_photo_url = coverPhoto;
@@ -140,12 +162,17 @@ export function DogManagementForm({ initialData, onSuccess, onCancel }: DogManag
 
       <div className={styles.field}>
         <label className={styles.label}>City *</label>
-        <Input 
-          value={city} 
-          onChange={(e) => setCity(e.target.value)} 
-          required 
-          placeholder="e.g. Moscow" 
+        <CityAutocomplete
+          value={city}
+          onChange={handleCityChange}
+          required
+          placeholder="Start typing a city..."
         />
+        {cityLat !== undefined && cityLng !== undefined && (
+          <span className={styles.coordHint}>
+            📍 {cityLat.toFixed(4)}, {cityLng.toFixed(4)}
+          </span>
+        )}
       </div>
 
       <div className={styles.field}>

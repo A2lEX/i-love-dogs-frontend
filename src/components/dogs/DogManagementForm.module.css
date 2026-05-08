@@ -59,3 +59,13 @@
   border-top: 1px solid #eaeaea;
   padding-top: 20px;
 }
+
+.coordHint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
